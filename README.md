@@ -1,70 +1,112 @@
-# claude-skills
+# ai-skills
 
-A curated collection of Claude Code skills for text polishing, bilingual translation, and writing assistance.
+A curated collection of AI prompts for writing, translation, and productivity — works with any model, installable as Claude Code skills.
 
 ## Skills
 
-| Skill | Command | Description |
-|-------|---------|-------------|
+| Skill | Claude Command | Description |
+|-------|---------------|-------------|
 | [editor](skills/editor/SKILL.md) | `/ai-skills:editor` | 3-phase text polish + Chinese/English bilingual translation (supports Chinese, English, Russian input) |
-| [communicator](skills/communicator/SKILL.md) | `/ai-skills:communicator` | Draft culturally appropriate Russian Telegram messages for formal/elderly recipients, with Chinese translation and strategy notes |
+| [communicator](skills/communicator/SKILL.md) | `/ai-skills:communicator` | Draft formal Russian messages from Chinese input, with Chinese translation and cultural strategy notes |
+
+---
 
 ## Installation
 
-### Option 1 — Project-level (recommended for teams)
+### Claude Code
 
-Clone into your project's `.claude/` directory:
+#### Personal install — available in all your projects
+
+**Mac / Linux**
+```bash
+git clone https://github.com/xiongxianfei/ai-skills ~/.claude/plugins/ai-skills
+```
+
+**Windows**
+```powershell
+git clone https://github.com/xiongxianfei/ai-skills "$env:USERPROFILE\.claude\plugins\ai-skills"
+```
+
+Restart Claude Code — skills are auto-discovered and available as `/ai-skills:<skill-name>`.
+
+#### Project-level install — shared with your team
+
+Run this inside your project root:
 
 ```bash
 git clone https://github.com/xiongxianfei/ai-skills .claude/plugins/ai-skills
 ```
 
-Then launch Claude Code — skills are auto-discovered.
+Commit `.claude/plugins/ai-skills` so teammates get the skills automatically.
 
-### Option 2 — Personal (available in all projects)
-
-Clone into your personal Claude directory:
+#### Try it without installing
 
 ```bash
-git clone https://github.com/xiongxianfei/ai-skills ~/.claude/plugins/ai-skills
+git clone https://github.com/xiongxianfei/ai-skills
+claude --plugin-dir ./ai-skills
 ```
 
-### Option 3 — Dev / try it out
+### Other AI models (ChatGPT, Gemini, etc.)
 
-Point Claude Code at the local directory directly:
+Each skill's prompt works with any model — just copy and paste:
 
-```bash
-claude --plugin-dir ./claude-skills
-```
+1. Open `skills/<skill-name>/SKILL.md`
+2. Copy everything **below** the `---` frontmatter block
+3. Paste as the system prompt in your AI tool of choice
+
+---
 
 ## Usage
 
-Once installed, invoke a skill via its slash command:
+### Claude Code
+
+Invoke by slash command, passing your text as the argument:
 
 ```
-/claude-skills:editor <your text here>
+/ai-skills:editor  Please polish this text for me.
+/ai-skills:communicator  我想告诉房东暖气坏了，请帮我写一条俄语消息。
 ```
 
-Or just paste text and ask Claude to polish/translate it — the skill's description guides auto-invocation.
+Or just describe what you want — Claude auto-invokes the right skill based on context.
+
+### Other models
+
+Paste the prompt as the system prompt, then send your input as the first user message.
+
+---
 
 ## Skill Details
 
 ### `editor` — Text Polish & Bilingual Translation
 
-Accepts Chinese, English, or Russian input and runs a structured 3-phase pipeline:
+Accepts Chinese, English, or Russian input and runs a 3-phase pipeline:
 
-1. **Deep Optimization** — Clarify, condense, and elevate the text without changing its meaning. Each change is explained.
+1. **Deep Optimization** — Clarify, condense, and elevate the text without changing its meaning. Each change is explained inline.
 2. **Quality Assessment** — Grammar, tone, and cultural-appropriateness check on the optimized text.
 3. **Bilingual Output** — Side-by-side Chinese/English translation of the final text.
 
-Designed for technical documentation, academic writing, and professional business communication.
+Best for: technical documentation, academic writing, professional business communication.
+
+### `communicator` — Formal Russian Communication Assistant
+
+Takes your Chinese description of what you want to say and produces:
+
+1. **Russian message** — Ready to send, culturally appropriate, using formal "Вы" register with proper greetings and closings.
+2. **Chinese translation** — Exact translation of the Russian message.
+3. **沟通建议** — Cultural strategy notes explaining the phrasing choices.
+
+Default recipient is an elderly Russian landlady (Татьяна). Mention a different recipient/context in your input to adapt the tone.
+
+Best for: landlord communication, formal letters, official correspondence with Russian contacts.
+
+---
 
 ## Contributing
 
 1. Fork the repo
-2. Add your skill under `skills/<skill-name>/SKILL.md`
-3. Follow the frontmatter schema (see [Claude Code Skills docs](https://docs.anthropic.com/en/docs/claude-code/skills))
-4. Open a PR with a brief description of what the skill does and when to use it
+2. Create a branch: `git checkout -b feat/your-skill-name`
+3. Add your skill under `skills/<skill-name>/SKILL.md` following the [frontmatter schema](https://docs.anthropic.com/en/docs/claude-code/skills)
+4. Open a PR — include what the skill does and when to use it
 
 ## License
 
