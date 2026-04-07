@@ -1,5 +1,8 @@
 # ai-skills
 
+[![Validate Skills](https://github.com/xiongxianfei/ai-skills/actions/workflows/validate.yml/badge.svg)](https://github.com/xiongxianfei/ai-skills/actions/workflows/validate.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 A curated collection of AI prompts for writing, translation, and productivity — works with any model, installable as Claude Code skills.
 
 ## Skills
