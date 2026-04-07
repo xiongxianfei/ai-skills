@@ -8,6 +8,7 @@ A curated collection of AI prompts for writing, translation, and productivity �
 |-------|---------------|-------------|
 | [editor](skills/editor/SKILL.md) | `/editor` | 3-phase text polish + Chinese/English bilingual translation (supports Chinese, English, Russian input) |
 | [communicator](skills/communicator/SKILL.md) | `/communicator` | Draft formal Russian messages from Chinese input, with Chinese translation and cultural strategy notes |
+| [doctor](skills/doctor/SKILL.md) | `/doctor` | Medical consultation — symptoms, medications, lab reports, health advice, with referral guidance and safety flags |
 
 ---
 
@@ -23,9 +24,10 @@ Skills are loaded from `~/.claude/skills/` (personal, all projects) or `.claude/
 git clone https://github.com/xiongxianfei/ai-skills
 cp -r ai-skills/skills/editor ~/.claude/skills/editor
 cp -r ai-skills/skills/communicator ~/.claude/skills/communicator
+cp -r ai-skills/skills/doctor ~/.claude/skills/doctor
 ```
 
-Restart Claude Code. Skills are available as `/editor` and `/communicator`.
+Restart Claude Code. Skills are available as `/editor`, `/communicator`, and `/doctor`.
 
 #### Project-level install — shared with your team
 
@@ -35,6 +37,7 @@ Run inside your project root:
 git clone https://github.com/xiongxianfei/ai-skills
 cp -r ai-skills/skills/editor .claude/skills/editor
 cp -r ai-skills/skills/communicator .claude/skills/communicator
+cp -r ai-skills/skills/doctor .claude/skills/doctor
 ```
 
 Commit the `.claude/skills/` folder so teammates get the skills automatically.
