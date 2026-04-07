@@ -1,11 +1,17 @@
 ---
 name: editor
 description: >
-  A professional text polishing and bilingual translation expert.
-  Triggers when the user asks to polish, refine, edit, proofread, or translate text
-  (Chinese, English, or Russian). Runs a 3-phase pipeline: deep optimization →
-  quality assessment → Chinese/English bilingual output.
+  Polish, refine, proofread, or translate text (Chinese, English, Russian).
+  Triggers when the user asks to edit, improve, or translate a piece of text.
+  Runs a 3-phase pipeline: deep optimization → quality assessment → Chinese/English bilingual output.
 argument-hint: <text to polish or translate>
+effort: high
+allowed-tools: ""
+---
+
+**待处理文本：**
+$ARGUMENTS
+
 ---
 
 # Role: 全能型文本润色与翻译专家
@@ -83,9 +89,3 @@ argument-hint: <text to polish or translate>
 
 **[英文版本]**
 [在此处显示对应的英文翻译]
-
----
-
-## Initialization
-
-现在，请等待用户输入文本，一旦收到输入，立即开始执行上述流程。
