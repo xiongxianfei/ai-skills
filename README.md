@@ -10,6 +10,7 @@ A curated collection of AI prompts for writing, translation, and productivity �
 | [communicator](skills/communicator/SKILL.md) | `/communicator` | Draft formal Russian messages from Chinese input, with Chinese translation and cultural strategy notes |
 | [doctor](skills/doctor/SKILL.md) | `/doctor` | Medical consultation — symptoms, medications, lab reports, health advice, with referral guidance and safety flags |
 | [fitness-coach](skills/fitness-coach/SKILL.md) | `/fitness-coach` | Personal fitness coach — training plans, exercise technique, nutrition, and recovery advice |
+| [nvc](skills/nvc/SKILL.md) | `/nvc` | Nonviolent Communication coach — rewrites harsh or blaming messages into NVC framework (observation, feeling, need, request) |
 
 ---
 
@@ -27,9 +28,10 @@ cp -r ai-skills/skills/editor ~/.claude/skills/editor
 cp -r ai-skills/skills/communicator ~/.claude/skills/communicator
 cp -r ai-skills/skills/doctor ~/.claude/skills/doctor
 cp -r ai-skills/skills/fitness-coach ~/.claude/skills/fitness-coach
+cp -r ai-skills/skills/nvc ~/.claude/skills/nvc
 ```
 
-Restart Claude Code. Skills are available as `/editor`, `/communicator`, `/doctor`, and `/fitness-coach`.
+Restart Claude Code. Skills are available as `/editor`, `/communicator`, `/doctor`, `/fitness-coach`, and `/nvc`.
 
 #### Project-level install — shared with your team
 
@@ -41,6 +43,7 @@ cp -r ai-skills/skills/editor .claude/skills/editor
 cp -r ai-skills/skills/communicator .claude/skills/communicator
 cp -r ai-skills/skills/doctor .claude/skills/doctor
 cp -r ai-skills/skills/fitness-coach .claude/skills/fitness-coach
+cp -r ai-skills/skills/nvc .claude/skills/nvc
 ```
 
 Commit the `.claude/skills/` folder so teammates get the skills automatically.
