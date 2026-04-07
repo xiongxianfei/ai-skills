@@ -1,11 +1,11 @@
 {
-  "name": "claude-skills",
-  "description": "A curated collection of Claude Code skills for text polishing, translation, and writing assistance.",
+  "name": "ai-skills",
+  "description": "Reusable AI prompts for writing, translation, and productivity — works with any model, installable as Claude Code skills.",
   "version": "1.0.0",
   "author": {
     "name": "xiongxianfei"
   },
-  "homepage": "https://github.com/xiongxianfei/claude-skills",
-  "repository": "https://github.com/xiongxianfei/claude-skills",
+  "homepage": "https://github.com/xiongxianfei/ai-skills",
+  "repository": "https://github.com/xiongxianfei/ai-skills",
   "license": "MIT"
 }
