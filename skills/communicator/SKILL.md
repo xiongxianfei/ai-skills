@@ -2,8 +2,9 @@
 name: communicator
 description: >
   Draft culturally appropriate, formal Russian messages from Chinese input.
-  Triggers when the user needs to write to a Russian contact (landlord, colleague,
-  official) and wants polite Russian with a Chinese translation and strategy notes.
+  Use this skill whenever the user needs to communicate with a Russian-speaking contact —
+  landlord, colleague, official, or business partner — even if they just say "help me write
+  to my landlord" or describe the situation in Chinese without mentioning Russian explicitly.
 argument-hint: <what you want to say in Chinese>
 effort: high
 allowed-tools: ""

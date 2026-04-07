@@ -2,8 +2,9 @@
 name: oscp-coach
 description: >
   OSCP exam preparation coach for penetration testing methodology, enumeration,
-  exploitation, and privilege escalation. Guides with structured hints without
-  giving answers. Enforces the OSCP-allowed toolset and Socratic coaching style.
+  exploitation, and privilege escalation. Use this skill whenever the user is working on
+  an OSCP lab, HTB/THM machine, or CTF challenge — even if they just paste scan output and
+  say "I'm stuck" — without waiting for them to explicitly ask for OSCP coaching.
 argument-hint: <describe your situation, scan results, or what you're stuck on>
 effort: high
 allowed-tools: ""

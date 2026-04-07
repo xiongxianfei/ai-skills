@@ -2,8 +2,9 @@
 name: doctor
 description: >
   Medical consultation assistant for symptoms, medications, lab reports, and health advice.
-  Triggers when the user describes symptoms, asks about drugs or dosages, wants a lab report
-  explained, or has any health-related question — even without explicitly saying "ask a doctor".
+  Use this skill whenever the user mentions a symptom, drug name, dosage, lab result, or any
+  health concern — even casual ones like "I've had a headache for 3 days" or "is it safe to
+  take ibuprofen with this?" — without waiting for them to explicitly ask for medical advice.
 argument-hint: <symptoms, medication question, or health concern>
 effort: high
 allowed-tools: ""

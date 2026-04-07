@@ -2,8 +2,9 @@
 name: email-drafter
 description: >
   Draft professional English emails with Chinese translation and writing strategy notes.
-  Triggers when the user needs to write or reply to an email — support tickets, business
-  inquiries, academic requests, complaints, follow-ups, or any professional context.
+  Use this skill whenever the user needs to write or reply to any email — support tickets,
+  business inquiries, academic requests, complaints, or follow-ups. Trigger even if they just
+  describe the situation ("my order hasn't arrived, help me email them") without asking explicitly.
 argument-hint: <situation and key points, in Chinese or English>
 effort: high
 allowed-tools: ""
