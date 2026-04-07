@@ -17,15 +17,11 @@ A curated collection of AI prompts for writing, translation, and productivity �
 
 #### Personal install — available in all your projects
 
-**Mac / Linux**
 ```bash
 git clone https://github.com/xiongxianfei/ai-skills ~/.claude/plugins/ai-skills
 ```
 
-**Windows**
-```powershell
-git clone https://github.com/xiongxianfei/ai-skills "$env:USERPROFILE\.claude\plugins\ai-skills"
-```
+Works on Mac, Linux, and Windows (Git Bash / WSL). For PowerShell, use `$env:USERPROFILE` instead of `~`.
 
 Restart Claude Code — skills are auto-discovered and available as `/ai-skills:<skill-name>`.
 
