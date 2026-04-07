@@ -17,6 +17,8 @@ A curated collection of AI prompts for writing, translation, and productivity �
 | [email-drafter](skills/email-drafter/SKILL.md) | `/email-drafter` | Draft professional English emails with Chinese translation and writing strategy notes — support tickets, business, academic, complaints, follow-ups |
 | [journaling](skills/journaling/SKILL.md) | `/journaling` | Guided daily reflection coach — turns your day into structured reflection, deep-dive prompts, an optional journal draft, and a clear intention for tomorrow |
 | [study-planner](skills/study-planner/SKILL.md) | `/study-planner` | Learning plan designer — turns any learning goal into a phased roadmap with weekly tasks, milestones, and curated resource recommendations |
+| [language-tutor](skills/language-tutor/SKILL.md) | `/language-tutor` | Language learning tutor for any language — sentence correction, grammar, vocabulary, writing feedback, and conversation practice with targeted exercises |
+| [oscp-coach](skills/oscp-coach/SKILL.md) | `/oscp-coach` | OSCP exam preparation coach — Socratic methodology guidance, 3-tier hint system, enumeration framework, and OSCP-allowed toolset enforcement |
 
 ---
 
@@ -38,9 +40,11 @@ cp -r ai-skills/skills/nvc ~/.claude/skills/nvc
 cp -r ai-skills/skills/email-drafter ~/.claude/skills/email-drafter
 cp -r ai-skills/skills/journaling ~/.claude/skills/journaling
 cp -r ai-skills/skills/study-planner ~/.claude/skills/study-planner
+cp -r ai-skills/skills/language-tutor ~/.claude/skills/language-tutor
+cp -r ai-skills/skills/oscp-coach ~/.claude/skills/oscp-coach
 ```
 
-Restart Claude Code. Skills are available as `/editor`, `/communicator`, `/doctor`, `/fitness-coach`, `/nvc`, `/email-drafter`, `/journaling`, and `/study-planner`.
+Restart Claude Code. Skills are available as `/editor`, `/communicator`, `/doctor`, `/fitness-coach`, `/nvc`, `/email-drafter`, `/journaling`, `/study-planner`, `/language-tutor`, and `/oscp-coach`.
 
 #### Project-level install — shared with your team
 
@@ -56,6 +60,8 @@ cp -r ai-skills/skills/nvc .claude/skills/nvc
 cp -r ai-skills/skills/email-drafter .claude/skills/email-drafter
 cp -r ai-skills/skills/journaling .claude/skills/journaling
 cp -r ai-skills/skills/study-planner .claude/skills/study-planner
+cp -r ai-skills/skills/language-tutor .claude/skills/language-tutor
+cp -r ai-skills/skills/oscp-coach .claude/skills/oscp-coach
 ```
 
 Commit the `.claude/skills/` folder so teammates get the skills automatically.
