@@ -6,7 +6,8 @@ A curated collection of Claude Code skills for text polishing, bilingual transla
 
 | Skill | Command | Description |
 |-------|---------|-------------|
-| [editor](skills/editor/SKILL.md) | `/claude-skills:editor` | 3-phase text polish + Chinese/English bilingual translation (supports Chinese, English, Russian input) |
+| [editor](skills/editor/SKILL.md) | `/ai-skills:editor` | 3-phase text polish + Chinese/English bilingual translation (supports Chinese, English, Russian input) |
+| [communicator](skills/communicator/SKILL.md) | `/ai-skills:communicator` | Draft culturally appropriate Russian Telegram messages for formal/elderly recipients, with Chinese translation and strategy notes |
 
 ## Installation
 
@@ -15,7 +16,7 @@ A curated collection of Claude Code skills for text polishing, bilingual transla
 Clone into your project's `.claude/` directory:
 
 ```bash
-git clone https://github.com/xiongxianfei/claude-skills .claude/plugins/claude-skills
+git clone https://github.com/xiongxianfei/ai-skills .claude/plugins/ai-skills
 ```
 
 Then launch Claude Code — skills are auto-discovered.
@@ -25,7 +26,7 @@ Then launch Claude Code — skills are auto-discovered.
 Clone into your personal Claude directory:
 
 ```bash
-git clone https://github.com/xiongxianfei/claude-skills ~/.claude/plugins/claude-skills
+git clone https://github.com/xiongxianfei/ai-skills ~/.claude/plugins/ai-skills
 ```
 
 ### Option 3 — Dev / try it out
