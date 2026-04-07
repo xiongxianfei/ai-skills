@@ -9,6 +9,7 @@ A curated collection of AI prompts for writing, translation, and productivity �
 | [editor](skills/editor/SKILL.md) | `/editor` | 3-phase text polish + Chinese/English bilingual translation (supports Chinese, English, Russian input) |
 | [communicator](skills/communicator/SKILL.md) | `/communicator` | Draft formal Russian messages from Chinese input, with Chinese translation and cultural strategy notes |
 | [doctor](skills/doctor/SKILL.md) | `/doctor` | Medical consultation — symptoms, medications, lab reports, health advice, with referral guidance and safety flags |
+| [fitness-coach](skills/fitness-coach/SKILL.md) | `/fitness-coach` | Personal fitness coach — training plans, exercise technique, nutrition, and recovery advice |
 
 ---
 
@@ -25,9 +26,10 @@ git clone https://github.com/xiongxianfei/ai-skills
 cp -r ai-skills/skills/editor ~/.claude/skills/editor
 cp -r ai-skills/skills/communicator ~/.claude/skills/communicator
 cp -r ai-skills/skills/doctor ~/.claude/skills/doctor
+cp -r ai-skills/skills/fitness-coach ~/.claude/skills/fitness-coach
 ```
 
-Restart Claude Code. Skills are available as `/editor`, `/communicator`, and `/doctor`.
+Restart Claude Code. Skills are available as `/editor`, `/communicator`, `/doctor`, and `/fitness-coach`.
 
 #### Project-level install — shared with your team
 
@@ -38,6 +40,7 @@ git clone https://github.com/xiongxianfei/ai-skills
 cp -r ai-skills/skills/editor .claude/skills/editor
 cp -r ai-skills/skills/communicator .claude/skills/communicator
 cp -r ai-skills/skills/doctor .claude/skills/doctor
+cp -r ai-skills/skills/fitness-coach .claude/skills/fitness-coach
 ```
 
 Commit the `.claude/skills/` folder so teammates get the skills automatically.
