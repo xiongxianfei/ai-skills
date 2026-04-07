@@ -10,6 +10,8 @@ Rules checked per SKILL.md:
   [REQUIRED]  ## Output Format section present in the prompt body
   [BEST PRACTICE]  effort field present
   [BEST PRACTICE]  allowed-tools field present
+  [BEST PRACTICE]  description is in English (ASCII only)
+  [BEST PRACTICE]  argument-hint is in English (ASCII only)
 
 Rules checked for plugin.json:
   [REQUIRED]  Valid JSON
@@ -39,6 +41,25 @@ def error(path: str, msg: str):
 
 def warn(path: str, msg: str):
     warnings.append(f"  WARN   {path}: {msg}")
+
+
+def contains_non_latin_script(s: str) -> bool:
+    """Return True if the string contains CJK or Cyrillic characters.
+
+    Allows common typographic characters used in English (em dash, arrows, etc.)
+    while catching descriptions written in Chinese, Russian, Japanese, etc.
+    """
+    for c in s:
+        cp = ord(c)
+        if (
+            0x0400 <= cp <= 0x04FF   # Cyrillic
+            or 0x3040 <= cp <= 0x309F  # Hiragana
+            or 0x30A0 <= cp <= 0x30FF  # Katakana
+            or 0x3400 <= cp <= 0x4DBF  # CJK Extension A
+            or 0x4E00 <= cp <= 0x9FFF  # CJK Unified Ideographs
+        ):
+            return True
+    return False
 
 
 def parse_skill(path: Path) -> tuple[dict, str]:
@@ -75,6 +96,15 @@ def validate_skill(skill_dir: Path):
     for field in BEST_PRACTICE_FRONTMATTER:
         if field not in fm:
             warn(label, f"missing best-practice frontmatter field: '{field}'")
+
+    # English-only checks on fields shown in Claude Code UI
+    desc = str(fm.get("description", ""))
+    if desc and contains_non_latin_script(desc):
+        warn(label, "description contains non-Latin script — use English for reliable auto-invocation")
+
+    hint = str(fm.get("argument-hint", ""))
+    if hint and contains_non_latin_script(hint):
+        warn(label, "argument-hint contains non-Latin script — use English as it appears in the autocomplete UI")
 
     if "$ARGUMENTS" not in body:
         error(label, "$ARGUMENTS not found in prompt body — slash command input will be dropped")

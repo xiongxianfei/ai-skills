@@ -1,0 +1,69 @@
+name: Skill Request
+description: Propose a new skill for the collection
+title: "[Skill Request] "
+labels: ["skill-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a new skill! Please fill in the details below.
+
+  - type: input
+    id: skill-name
+    attributes:
+      label: Skill name
+      description: Short, lowercase, hyphenated (e.g. `code-reviewer`, `meal-planner`)
+      placeholder: my-skill
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What does this skill do?
+      description: Describe the skill in 1-2 sentences. What problem does it solve? When should it trigger?
+      placeholder: "e.g. Helps users draft professional emails by restructuring casual or unclear input into clear, formal business writing."
+    validations:
+      required: true
+
+  - type: textarea
+    id: trigger-examples
+    attributes:
+      label: Trigger examples
+      description: Give 2-3 example inputs that should trigger this skill.
+      placeholder: |
+        - "Help me write an email to my manager about taking time off"
+        - "This email sounds too casual, can you make it more professional?"
+    validations:
+      required: true
+
+  - type: textarea
+    id: output-format
+    attributes:
+      label: Expected output format
+      description: Describe what the output should look like. Sections? Tables? Specific structure?
+    validations:
+      required: false
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - Writing & Communication
+        - Health & Wellness
+        - Learning & Productivity
+        - Language & Translation
+        - Other
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Before submitting
+      options:
+        - label: I searched existing issues and this skill has not been requested before
+          required: true
+        - label: This skill is general enough to be useful to others, not just my personal use case
+          required: true
