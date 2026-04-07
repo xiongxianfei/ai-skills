@@ -6,8 +6,8 @@ A curated collection of AI prompts for writing, translation, and productivity �
 
 | Skill | Claude Command | Description |
 |-------|---------------|-------------|
-| [editor](skills/editor/SKILL.md) | `/ai-skills:editor` | 3-phase text polish + Chinese/English bilingual translation (supports Chinese, English, Russian input) |
-| [communicator](skills/communicator/SKILL.md) | `/ai-skills:communicator` | Draft formal Russian messages from Chinese input, with Chinese translation and cultural strategy notes |
+| [editor](skills/editor/SKILL.md) | `/editor` | 3-phase text polish + Chinese/English bilingual translation (supports Chinese, English, Russian input) |
+| [communicator](skills/communicator/SKILL.md) | `/communicator` | Draft formal Russian messages from Chinese input, with Chinese translation and cultural strategy notes |
 
 ---
 
@@ -15,32 +15,38 @@ A curated collection of AI prompts for writing, translation, and productivity �
 
 ### Claude Code
 
+Skills are loaded from `~/.claude/skills/` (personal, all projects) or `.claude/skills/` (project-level). Clone the repo and copy the skill folders you want:
+
 #### Personal install — available in all your projects
 
 ```bash
-git clone https://github.com/xiongxianfei/ai-skills ~/.claude/plugins/ai-skills
+git clone https://github.com/xiongxianfei/ai-skills
+cp -r ai-skills/skills/editor ~/.claude/skills/editor
+cp -r ai-skills/skills/communicator ~/.claude/skills/communicator
 ```
 
-Works on Mac, Linux, and Windows (Git Bash / WSL). For PowerShell, use `$env:USERPROFILE` instead of `~`.
-
-Restart Claude Code — skills are auto-discovered and available as `/ai-skills:<skill-name>`.
+Restart Claude Code. Skills are available as `/editor` and `/communicator`.
 
 #### Project-level install — shared with your team
 
-Run this inside your project root:
+Run inside your project root:
 
 ```bash
-git clone https://github.com/xiongxianfei/ai-skills .claude/plugins/ai-skills
+git clone https://github.com/xiongxianfei/ai-skills
+cp -r ai-skills/skills/editor .claude/skills/editor
+cp -r ai-skills/skills/communicator .claude/skills/communicator
 ```
 
-Commit `.claude/plugins/ai-skills` so teammates get the skills automatically.
+Commit the `.claude/skills/` folder so teammates get the skills automatically.
 
-#### Try it without installing
+#### Try it for one session (no install)
 
 ```bash
 git clone https://github.com/xiongxianfei/ai-skills
 claude --plugin-dir ./ai-skills
 ```
+
+Skills are available as `/ai-skills:editor` and `/ai-skills:communicator` for this session only.
 
 ### Other AI models (ChatGPT, Gemini, etc.)
 
@@ -59,11 +65,11 @@ Each skill's prompt works with any model — just copy and paste:
 Invoke by slash command, passing your text as the argument:
 
 ```
-/ai-skills:editor  Please polish this text for me.
-/ai-skills:communicator  我想告诉房东暖气坏了，请帮我写一条俄语消息。
+/editor  Please polish this text for me.
+/communicator  我想告诉房东暖气坏了，请帮我写一条俄语消息。
 ```
 
-Or just describe what you want — Claude auto-invokes the right skill based on context.
+Or just describe what you want in natural language — Claude auto-invokes the right skill based on context.
 
 ### Other models
 
