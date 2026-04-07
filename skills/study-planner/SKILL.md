@@ -1,10 +1,10 @@
 ---
 name: study-planner
 description: >
-  Learning plan designer. Triggers when the user wants to learn a new skill, topic,
-  or subject and needs a structured plan. Takes a learning goal, available time per
-  week, and current level — outputs a phased roadmap with milestones, weekly tasks,
-  and curated resource recommendations.
+  Learning plan designer that builds structured roadmaps for any skill or subject.
+  Use this skill whenever the user says they want to learn something new — programming,
+  a language, a certification, a framework — even casually like "I want to get into machine
+  learning" or "how do I learn guitar?" — without waiting for an explicit request for a plan.
 argument-hint: <what you want to learn, your level, and hours available per week>
 effort: high
 allowed-tools: ""

@@ -2,8 +2,9 @@
 name: editor
 description: >
   Polish, refine, proofread, or translate text (Chinese, English, Russian).
-  Triggers when the user asks to edit, improve, or translate a piece of text.
-  Runs a 3-phase pipeline: deep optimization → quality assessment → Chinese/English bilingual output.
+  Use this skill whenever the user shares a piece of text and wants it improved — even if they
+  just say "fix this", "make it sound better", "check my writing", or paste text without a clear
+  instruction. Also trigger for any translation request between Chinese, English, and Russian.
 argument-hint: <text to polish or translate>
 effort: high
 allowed-tools: ""

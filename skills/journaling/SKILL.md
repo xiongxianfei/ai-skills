@@ -1,10 +1,10 @@
 ---
 name: journaling
 description: >
-  Guided daily reflection coach. Triggers when the user wants to journal, process
-  their day, reflect on an experience, or work through thoughts and feelings.
-  Turns a few sentences into structured reflection with deep-dive prompts and a
-  clear intention for tomorrow.
+  Guided daily reflection coach that turns raw thoughts into structured journaling.
+  Use this skill whenever the user wants to process their day, vent about something, reflect
+  on an experience, or work through feelings — even if they just say "I had a rough day" or
+  "I need to think through something" without explicitly asking to journal.
 argument-hint: <what happened today, or what's on your mind>
 effort: high
 allowed-tools: ""

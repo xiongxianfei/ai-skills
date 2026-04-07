@@ -1,10 +1,10 @@
 ---
 name: nvc
 description: >
-  Nonviolent Communication (NVC) coach. Rewrites emotionally charged, blaming,
-  or judgmental messages into the NVC framework: observation, feeling, need, request.
-  Triggers when the user wants to express something more gently, resolve a conflict,
-  draft a reply, or says a message sounds "too harsh" or "accusatory".
+  Nonviolent Communication (NVC) coach that rewrites harsh or blaming messages into the
+  NVC framework: observation, feeling, need, request. Use this skill whenever the user wants
+  to express something more gently, resolve a conflict, or drafts a message that sounds angry,
+  accusatory, or passive-aggressive — even if they don't mention NVC or ask to "communicate better".
 argument-hint: <what you want to say, or the situation/message bothering you>
 effort: high
 allowed-tools: ""

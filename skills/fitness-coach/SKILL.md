@@ -2,8 +2,9 @@
 name: fitness-coach
 description: >
   Personal fitness coach for training plans, exercise technique, nutrition, and recovery.
-  Triggers when the user asks about workouts, muscle gain, fat loss, running, cycling,
-  strength training, stretching, or any question related to physical fitness and performance.
+  Use this skill whenever the user mentions working out, body goals, exercise, diet for
+  performance, soreness, or injury recovery — even casual questions like "should I run today?"
+  or "why are my legs sore?" — without waiting for an explicit request for a training plan.
 argument-hint: <fitness goal, question, or training request>
 effort: high
 allowed-tools: ""

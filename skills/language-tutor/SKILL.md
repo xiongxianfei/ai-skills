@@ -1,10 +1,10 @@
 ---
 name: language-tutor
 description: >
-  Language learning tutor for any language. Triggers when the user wants to correct
-  a sentence, understand grammar, learn vocabulary, practice conversation, or get
-  feedback on their writing in a foreign language. Explains errors clearly and
-  provides targeted practice to reinforce the lesson.
+  Language learning tutor for any language. Use this skill whenever the user shares a
+  sentence or asks about grammar, vocabulary, or pronunciation in any foreign language —
+  even if they just paste a sentence and say "is this right?" or "how do I say X in Japanese?"
+  without explicitly asking for a lesson. Always trigger for any foreign-language feedback request.
 argument-hint: <sentence to correct, grammar question, vocab, or practice request — specify the target language>
 effort: high
 allowed-tools: ""
