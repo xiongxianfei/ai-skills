@@ -15,6 +15,7 @@ A curated collection of AI prompts for writing, translation, and productivity �
 | [fitness-coach](skills/fitness-coach/SKILL.md) | `/fitness-coach` | Personal fitness coach — training plans, exercise technique, nutrition, and recovery advice |
 | [nvc](skills/nvc/SKILL.md) | `/nvc` | Nonviolent Communication coach — rewrites harsh or blaming messages into NVC framework (observation, feeling, need, request) |
 | [email-drafter](skills/email-drafter/SKILL.md) | `/email-drafter` | Draft professional English emails with Chinese translation and writing strategy notes — support tickets, business, academic, complaints, follow-ups |
+| [journaling](skills/journaling/SKILL.md) | `/journaling` | Guided daily reflection coach — turns your day into structured reflection, deep-dive prompts, an optional journal draft, and a clear intention for tomorrow |
 
 ---
 
@@ -34,9 +35,10 @@ cp -r ai-skills/skills/doctor ~/.claude/skills/doctor
 cp -r ai-skills/skills/fitness-coach ~/.claude/skills/fitness-coach
 cp -r ai-skills/skills/nvc ~/.claude/skills/nvc
 cp -r ai-skills/skills/email-drafter ~/.claude/skills/email-drafter
+cp -r ai-skills/skills/journaling ~/.claude/skills/journaling
 ```
 
-Restart Claude Code. Skills are available as `/editor`, `/communicator`, `/doctor`, `/fitness-coach`, `/nvc`, and `/email-drafter`.
+Restart Claude Code. Skills are available as `/editor`, `/communicator`, `/doctor`, `/fitness-coach`, `/nvc`, `/email-drafter`, and `/journaling`.
 
 #### Project-level install — shared with your team
 
@@ -50,6 +52,7 @@ cp -r ai-skills/skills/doctor .claude/skills/doctor
 cp -r ai-skills/skills/fitness-coach .claude/skills/fitness-coach
 cp -r ai-skills/skills/nvc .claude/skills/nvc
 cp -r ai-skills/skills/email-drafter .claude/skills/email-drafter
+cp -r ai-skills/skills/journaling .claude/skills/journaling
 ```
 
 Commit the `.claude/skills/` folder so teammates get the skills automatically.
