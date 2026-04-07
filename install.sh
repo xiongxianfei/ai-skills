@@ -1,10 +1,28 @@
 #!/usr/bin/env bash
 # install.sh — install all ai-skills into ~/.claude/skills/
+#
+# Usage:
+#   curl -sSL https://raw.githubusercontent.com/xiongxianfei/ai-skills/main/install.sh | bash
+#   curl -sSL .../install.sh | bash -s -- --target .claude/skills   # project-level
 set -euo pipefail
 
 REPO_URL="https://github.com/xiongxianfei/ai-skills"
 SKILLS_DIR="${HOME}/.claude/skills"
 TMP_DIR="$(mktemp -d)"
+
+# Parse --target flag
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --target)
+            SKILLS_DIR="$2"
+            shift 2
+            ;;
+        *)
+            echo "Unknown option: $1" >&2
+            exit 1
+            ;;
+    esac
+done
 
 cleanup() { rm -rf "$TMP_DIR"; }
 trap cleanup EXIT
