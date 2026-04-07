@@ -26,45 +26,34 @@ A curated collection of AI prompts for writing, translation, and productivity �
 
 ### Claude Code
 
-Skills are loaded from `~/.claude/skills/` (personal, all projects) or `.claude/skills/` (project-level). Clone the repo and copy the skill folders you want:
+#### Install all skills (recommended)
 
-#### Personal install — available in all your projects
+```bash
+curl -sSL https://raw.githubusercontent.com/xiongxianfei/ai-skills/main/install.sh | bash
+```
+
+This clones the repo into a temp directory, copies all skill folders into `~/.claude/skills/`, and cleans up automatically. Run the same command again to update.
+
+Restart Claude Code after installing — skills are available immediately as `/editor`, `/communicator`, `/doctor`, `/fitness-coach`, `/nvc`, `/email-drafter`, `/journaling`, `/study-planner`, `/language-tutor`, and `/oscp-coach`.
+
+#### Install a specific skill only
 
 ```bash
 git clone https://github.com/xiongxianfei/ai-skills
 cp -r ai-skills/skills/editor ~/.claude/skills/editor
-cp -r ai-skills/skills/communicator ~/.claude/skills/communicator
-cp -r ai-skills/skills/doctor ~/.claude/skills/doctor
-cp -r ai-skills/skills/fitness-coach ~/.claude/skills/fitness-coach
-cp -r ai-skills/skills/nvc ~/.claude/skills/nvc
-cp -r ai-skills/skills/email-drafter ~/.claude/skills/email-drafter
-cp -r ai-skills/skills/journaling ~/.claude/skills/journaling
-cp -r ai-skills/skills/study-planner ~/.claude/skills/study-planner
-cp -r ai-skills/skills/language-tutor ~/.claude/skills/language-tutor
-cp -r ai-skills/skills/oscp-coach ~/.claude/skills/oscp-coach
 ```
 
-Restart Claude Code. Skills are available as `/editor`, `/communicator`, `/doctor`, `/fitness-coach`, `/nvc`, `/email-drafter`, `/journaling`, `/study-planner`, `/language-tutor`, and `/oscp-coach`.
+Replace `editor` with the skill name you want.
 
 #### Project-level install — shared with your team
 
 Run inside your project root:
 
 ```bash
-git clone https://github.com/xiongxianfei/ai-skills
-cp -r ai-skills/skills/editor .claude/skills/editor
-cp -r ai-skills/skills/communicator .claude/skills/communicator
-cp -r ai-skills/skills/doctor .claude/skills/doctor
-cp -r ai-skills/skills/fitness-coach .claude/skills/fitness-coach
-cp -r ai-skills/skills/nvc .claude/skills/nvc
-cp -r ai-skills/skills/email-drafter .claude/skills/email-drafter
-cp -r ai-skills/skills/journaling .claude/skills/journaling
-cp -r ai-skills/skills/study-planner .claude/skills/study-planner
-cp -r ai-skills/skills/language-tutor .claude/skills/language-tutor
-cp -r ai-skills/skills/oscp-coach .claude/skills/oscp-coach
+curl -sSL https://raw.githubusercontent.com/xiongxianfei/ai-skills/main/install.sh | bash -s -- --target .claude/skills
 ```
 
-Commit the `.claude/skills/` folder so teammates get the skills automatically.
+Or manually copy the folders you want into `.claude/skills/` and commit them so teammates get the skills automatically.
 
 #### Try it for one session (no install)
 
