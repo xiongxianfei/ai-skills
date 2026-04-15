@@ -6,12 +6,13 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for reporting a bug! Please provide as much detail as possible.
+        Thanks for reporting a bug. A useful report includes the smallest input that reproduces
+        the problem, the expected behavior, and the actual behavior.
 
   - type: dropdown
     id: skill
     attributes:
-      label: Affected skill
+      label: Affected skill or area
       options:
         - editor
         - communicator
@@ -19,15 +20,31 @@ body:
         - fitness-coach
         - nvc
         - email-drafter
+        - journaling
+        - study-planner
+        - language-tutor
+        - oscp-coach
+        - install/docs/repo tooling
         - other
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: What is the smallest prompt or sequence of steps that reproduces the problem?
+      placeholder: |
+        1. Run `/editor This is my text...`
+        2. Observe the second section of the response
     validations:
       required: true
 
   - type: textarea
     id: input
     attributes:
-      label: Input you provided
-      description: What did you type after the slash command?
+      label: Exact input
+      description: Paste the exact user input when possible.
       placeholder: "/editor This is my text..."
     validations:
       required: true
@@ -48,6 +65,28 @@ body:
     validations:
       required: true
 
+  - type: textarea
+    id: output_excerpt
+    attributes:
+      label: Output excerpt or screenshot
+      description: Paste the relevant output, or link a screenshot if the response is too long.
+      render: markdown
+
+  - type: dropdown
+    id: bug_class
+    attributes:
+      label: Bug class
+      description: Pick the closest category if you can.
+      options:
+        - trigger / wrong skill invoked
+        - prompt instructions unclear or incomplete
+        - output format violation
+        - safety / policy boundary
+        - translation / language quality
+        - metadata / frontmatter
+        - docs / installation mismatch
+        - other
+
   - type: dropdown
     id: model
     attributes:
@@ -59,3 +98,9 @@ body:
         - Other
     validations:
       required: true
+
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: Additional context
+      description: Include frequency, workarounds, or why this matters if relevant.

@@ -19,8 +19,16 @@
 
 ### For bug fixes / improvements
 - [ ] Describe what was wrong and why the fix is correct
+- [ ] Include a minimal reproduction in the PR description or linked issue
+- [ ] Add regression coverage or explain why automated coverage is not practical
+- [ ] Update docs, templates, or validator rules if this bug exposed a repeatable pattern
 - [ ] CI validation still passes
 
 ## Test plan
 
-<!-- How did you verify this works? Example inputs and outputs. -->
+<!--
+How did you verify this works?
+- Example inputs/outputs for prompt changes
+- Validator/test command output
+- Linked issue with reproduction, if applicable
+-->
