@@ -1,47 +1,50 @@
 ---
 name: plan-review
 description: >
-  Critically review `docs/plan.md` before implementation or major replanning.
-  Use when Codex should challenge milestone sizing, dependency order, risk
-  handling, validation coverage, non-goals, and rollout readiness without
-  modifying the plan file.
+  Review a concrete execution plan in `docs/plans/` before implementation.
+  Use when Codex should challenge whether the plan is self-contained,
+  correctly sequenced, safely scoped, and verifiable without modifying the
+  plan file.
 ---
 
-# Plan Review
+# Execution plan review
 
 ## Task
 
-Review an execution plan rigorously and identify gaps before implementation begins.
+Review an execution plan rigorously and identify gaps before implementation
+begins.
 
 ## Instructions
 
-1. Read the plan under review, usually `docs/plan.md`.
-2. Read `AGENTS.md`, `docs/workflows.md` if it exists, and any referenced specs.
+1. Read the concrete plan file under review, not just `docs/plan.md`.
+2. Read `AGENTS.md`, `.codex/PLANS.md`, and `docs/workflows.md` when relevant.
 3. Evaluate the plan against these dimensions:
-   - goal and context clarity
-   - milestone decomposition
-   - dependency accuracy and build order
-   - validation strategy
+   - self-contained context for a newcomer
+   - milestone size and sequencing
+   - dependency accuracy
+   - validation quality
    - risk coverage
-   - edge cases and rollback concerns
-   - non-goals and scope control
-4. Classify findings as:
-   - blocking
-   - major
-   - minor
-5. Identify missing milestones, hidden coupling, oversized PRs, and weak validation steps.
-6. Suggest specific plan changes rather than abstract criticism.
+   - rollback or recovery guidance
+   - explicit non-goals
+   - architecture alignment
+   - observability of “done”
+4. For each dimension, give a verdict and a specific explanation.
+5. Identify hidden coupling, missing milestones, unsafe ordering, and vague
+   acceptance criteria.
+6. Suggest concrete edits rather than abstract criticism.
+7. Do not modify the plan unless the user explicitly asks for edits.
 
 ## Gotchas
 
-- Do not rubber-stamp a plan because the structure looks neat.
-- Do not modify the plan file unless the user explicitly asks for edits.
-- Do not ignore execution risks at boundaries between milestones or systems.
-- Do not accept milestones without a concrete validation path.
+- Do not rubber-stamp a plan because it looks organized.
+- Do not review a generic index file as though it were the actual plan.
+- Do not ignore missing validation commands or missing recovery guidance.
+- Do not accept milestones that are too large for one review loop.
 
-## Expected Output
+## Expected output
 
-- verdict
-- findings by severity
-- exact plan changes or milestone splits
-- explicit statement on readiness for implementation
+- verdict such as approve, revise, or rethink
+- findings by review dimension
+- missing milestones or dependencies
+- exact suggested edits
+- explicit readiness statement for spec or implementation work

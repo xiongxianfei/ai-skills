@@ -1,38 +1,43 @@
 ---
 name: pr
-description: Prepare a feature for pull request creation in repositories that use specs/[feature].md and GitHub CLI workflows. Use when Codex should verify acceptance criteria, summarize changes against the base branch, ensure tests pass, and draft a concise PR body before opening or proposing a PR.
+description: >
+  Prepare a completed feature for pull request creation in repositories that
+  use concrete execution plans, specs, test specs, and GitHub workflows.
+  Use when Codex should verify readiness, summarize the real diff, and draft
+  a concise PR title and body grounded in what was actually verified.
 ---
 
-# Pull Request Preparation
+# Pull request preparation
 
 ## Task
 
-Prepare a completed feature for review with a clear PR summary grounded in the spec and actual diff.
+Prepare a completed feature for review with a clear PR summary grounded in
+the spec, the plan, and the actual diff.
 
 ## Instructions
 
-1. Read the feature spec and acceptance criteria.
-2. Verify tests pass before preparing the PR.
+1. Read the concrete plan file, feature spec, and acceptance criteria.
+2. Verify the relevant tests and validation commands passed before preparing the PR.
 3. Check git status for uncommitted changes.
 4. Confirm the branch is based on the correct base branch.
 5. Summarize the change from the actual diff, not memory.
 6. Draft a PR body that covers:
    - what changed
-   - spec reference
-   - test results
+   - plan and spec references
+   - test and validation results
    - compliance with requirements and non-goals
    - reviewer notes
    - post-merge follow-ups
-7. Create or propose the PR only if the repo is ready.
+7. Create or propose the PR only if the branch is ready.
 
 ## Gotchas
 
 - Do not open a PR if tests are failing.
 - Do not open a PR with uncommitted changes unless the user explicitly wants that workflow.
-- Do not omit the spec reference when the repo uses spec-driven development.
+- Do not omit the concrete plan and spec references.
 - Do not claim CI passed unless it actually did.
 
-## Expected Output
+## Expected output
 
 - readiness check results
 - concise change summary from diff
