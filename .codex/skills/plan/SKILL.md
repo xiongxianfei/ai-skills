@@ -1,60 +1,67 @@
 ---
 name: plan
 description: >
-  Create or update a living execution plan in `docs/plan.md` for complex
-  features, refactors, migrations, or risky fixes in repositories that use
-  `AGENTS.md`, `docs/workflows.md`, and `specs/`. Use when the task spans
-  multiple files or subsystems, should be split into reviewable PRs, or needs
-  explicit validation and sequencing.
+  Create or revise a living execution plan for complex work in repositories
+  that use `AGENTS.md`, `docs/plan.md`, `docs/plans/`, `docs/workflows.md`,
+  and `specs/`. Use when the task spans multiple files or subsystems,
+  changes architecture or behavior, is risky or ambiguous, or should be
+  split into reviewable PR-sized milestones. New initiatives must create a
+  new file under `docs/plans/YYYY-MM-DD-slug.md` and update `docs/plan.md`
+  instead of overwriting an older plan.
 ---
 
-# Living Execution Plan
+# Living execution plan
 
 ## Task
 
-Turn a requirement into a self-contained, milestone-based execution plan that a
-new contributor can follow from design to working, verified behavior.
+Turn a requirement into a self-contained, milestone-based execution plan that
+a new contributor can follow from design to working, verified behavior.
 
 ## Instructions
 
-1. Read `AGENTS.md` first for conventions, commands, architecture, and done criteria.
-2. Read `docs/workflows.md` if it exists.
-3. Read the most relevant code, interfaces, tests, and existing specs.
-4. Restate the needed context inside the plan so the plan is self-contained.
-5. Start the plan with:
-   - goal
-   - context
+1. Read `AGENTS.md` first for conventions, constraints, and done criteria.
+2. Read `docs/workflows.md` if the task touches an existing flow or handoff.
+3. Read `docs/plan.md` to understand current active and superseded work.
+4. Read the most relevant code, interfaces, tests, and existing specs.
+5. Decide whether the request is:
+   - a new initiative that needs a new file in `docs/plans/`, or
+   - a revision to an existing concrete plan file.
+6. Never start a new initiative by overwriting an older plan file.
+7. Make the plan self-contained. Restate the needed repo context inside the
+   plan instead of assuming prior chat context.
+8. Follow `.codex/PLANS.md` and include:
+   - purpose / big picture
+   - context and orientation
    - constraints
    - done when
-   - explicit non-goals
-6. Break the work into milestones small enough for one reviewable PR each.
-7. For each milestone, include:
-   - scope
-   - files or components touched
-   - dependencies
-   - risk
-   - size
-   - validation commands
-   - expected observable result
-8. Explain build order from real dependencies.
-9. Add living sections and keep them current when revising the plan:
-   - Progress
-   - Decision Log
-   - Surprises & Discoveries
-   - Validation Notes
-10. Prefer proof-of-concept milestones for risky unknowns before full implementation.
+   - milestone-by-milestone work
+   - progress
+   - surprises & discoveries
+   - decision log
+   - validation and acceptance
+   - validation notes
+   - idempotence and recovery
+   - outcomes & retrospective
+9. Keep milestones small enough for one reviewable PR each.
+10. For each milestone, name the files or components touched, dependencies,
+    risk, validation commands, and expected observable result.
+11. Update `docs/plan.md` so it points at the active concrete plan file and
+    records completed or superseded plans.
+12. If the task is still only an idea and not approved, prefer
+    `docs/roadmap.md` over creating a full plan file.
 
 ## Gotchas
 
-- Do not make the plan depend on unstated prior discussion.
+- Do not write a one-page summary that lacks commands, acceptance checks, or
+  file paths.
+- Do not rely on `docs/plan.md` as the plan body.
 - Do not create milestones that are too large to review safely.
-- Do not omit validation commands or acceptance checks.
-- Do not leave major ambiguity unresolved if it affects sequencing or scope.
+- Do not omit recovery steps for risky changes.
+- Do not leave major ambiguity unresolved if it affects scope or sequencing.
 
-## Expected Output
+## Expected output
 
-- self-contained overview
-- goal, context, constraints, done when, non-goals
-- milestone breakdown with dependencies, risks, and validation
-- explicit build order
-- living progress and decision sections
+- a concrete target plan file path
+- a self-contained living plan
+- an updated `docs/plan.md` index entry
+- explicit milestones, validation commands, and non-goals

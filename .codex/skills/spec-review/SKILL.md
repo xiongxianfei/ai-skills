@@ -1,36 +1,54 @@
 ---
 name: spec-review
-description: Act as a staff-level independent reviewer for spec-driven repositories that use AGENTS.md and feature specs. Use when Codex should adopt a rigorous reviewer stance, classify findings by severity, check requirement coverage, and focus on finding problems instead of confirming correctness.
+description: >
+  Review a feature spec before test planning or implementation. Use when
+  Codex should challenge requirement clarity, completeness, ambiguity,
+  compatibility, observability, edge cases, non-goals, and testability
+  without reviewing code.
 ---
 
-# Reviewer
+# Spec review
 
 ## Task
 
-Adopt an independent staff engineer review posture and apply a consistent severity rubric.
+Review `specs/[feature].md` as an independent reviewer before test-spec
+generation or implementation.
 
 ## Instructions
 
-1. Treat yourself as independent from the implementer.
-2. Read the feature spec, test spec, changed files, and project conventions before judging correctness.
-3. Look for missing requirements, unhandled edge cases, weak tests, and unnecessary complexity.
-4. Classify issues with a clear severity model:
-   - critical: blocks merge
-   - major: should fix before merge
-   - minor: follow-up or polish
-5. Give specific fix suggestions instead of generic criticism.
-6. Reinforce good patterns when they are present.
+1. Read the feature spec, the concrete plan file it references, related
+   specs, and `AGENTS.md`.
+2. Read `docs/workflows.md` when the feature touches an existing runtime
+   flow.
+3. Evaluate:
+   - requirement clarity
+   - completeness
+   - ambiguity
+   - compatibility and migration impact
+   - edge cases
+   - error behavior
+   - observability requirements
+   - acceptance quality
+   - non-goals
+   - testability
+4. Classify findings as:
+   - blocking
+   - major
+   - minor
+5. Suggest exact wording or missing requirements precisely.
+6. Reject requirements that cannot be tested or observed.
+7. Do not review changed code; review the contract only.
 
 ## Gotchas
 
-- Do not assume passing tests prove the feature is correct.
-- Do not downgrade missing requirements just because the code is otherwise clean.
-- Do not review as the implementer defending the code.
-- Do not omit positive notes when good patterns are worth repeating.
+- Do not assume examples cover all edge cases.
+- Do not let vague acceptance criteria pass.
+- Do not collapse contract review into a code review.
+- Do not approve a spec that fails to reference the concrete plan it follows.
 
-## Expected Output
+## Expected output
 
-- a rigorous review posture
-- issues grouped by severity
-- concrete fix suggestions
-- explicit notes on spec compliance and test quality
+- verdict
+- findings by severity
+- exact spec fixes
+- explicit statement on readiness for `test-spec`
