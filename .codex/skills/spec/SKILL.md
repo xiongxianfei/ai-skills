@@ -1,40 +1,48 @@
 ---
 name: spec
-description: Write a concrete feature specification for spec-driven repositories that use docs/plan.md, docs/workflows.md, and specs/. Use when Codex should define requirements, interface expectations, edge cases, examples, non-goals, acceptance criteria, and gotchas before implementation begins.
+description: >
+  Write a contract-level feature spec in `specs/[feature].md` for changes that
+  affect externally observable behavior such as APIs, CLI, UI, config, data
+  contracts, error behavior, or safety-sensitive logic. Use after the plan is
+  stable enough to define the behavior precisely.
 ---
 
 # Feature Spec Authoring
 
 ## Task
 
-Write a feature spec that defines what the system must do without dictating how it must be implemented.
+Write a precise, testable feature spec that defines what the system must do
+without locking in implementation details.
 
 ## Instructions
 
-1. Read `AGENTS.md` for project conventions.
-2. Read `docs/plan.md` to locate the feature's scope, dependencies, and risks.
-3. Read `docs/workflows.md` if it exists to understand system flow.
-4. Check related specs in `specs/` for dependencies and naming consistency.
-5. Clarify ambiguous inputs, outputs, or error behavior before writing the spec.
-6. Start with concrete examples first. Use them to expose edge cases.
-7. Derive requirements from the examples using `MUST`, `SHOULD`, and `MUST NOT`.
-8. List explicit edge cases and non-goals.
-9. Keep the spec compact enough that it remains reviewable.
+1. Read `AGENTS.md`, `docs/plan.md`, and `docs/workflows.md` if it exists.
+2. Read related specs and interfaces for naming and contract consistency.
+3. Use this skill only for behavior or contract changes worth specifying.
+4. Start with concrete examples before abstract requirements.
+5. Derive requirement IDs such as `R1`, `R2`, `R3` using `MUST`, `SHOULD`, and `MUST NOT`.
+6. Include:
+   - goal and context
+   - inputs and outputs
+   - invariants
+   - error handling and boundary behavior
+   - compatibility or migration expectations if relevant
+   - observability or logging expectations if relevant
+   - edge cases
+   - non-goals
+   - acceptance criteria
+7. Keep implementation details out unless they are externally observable constraints.
 
 ## Gotchas
 
-- Do not smuggle implementation details into the spec.
-- Do not write untestable MUST requirements.
-- Do not skip concrete examples; they often reveal missing edge cases.
-- Do not leave non-goals implicit.
+- Do not write vague or untestable MUST requirements.
+- Do not hide edge cases inside prose.
+- Do not specify internal structure unless it affects the contract.
 
 ## Expected Output
 
-- goal and context
-- requirements using normative language
-- interface and error-state expectations
-- at least three edge cases
-- at least two non-goals
-- concrete examples
+- examples first
+- requirement IDs with normative language
+- interface and failure expectations
+- explicit edge cases and non-goals
 - acceptance criteria
-- an initially empty or minimal gotchas section

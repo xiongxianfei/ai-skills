@@ -1,42 +1,60 @@
 ---
 name: plan
-description: Decompose a product requirement into small implementation features, dependencies, risks, build order, and non-goals for repositories that use a spec-driven workflow with AGENTS.md, docs/plan.md, docs/workflows.md, and specs/. Use when Codex should create or refine a one-page implementation plan before code is written.
+description: >
+  Create or update a living execution plan in `docs/plan.md` for complex
+  features, refactors, migrations, or risky fixes in repositories that use
+  `AGENTS.md`, `docs/workflows.md`, and `specs/`. Use when the task spans
+  multiple files or subsystems, should be split into reviewable PRs, or needs
+  explicit validation and sequencing.
 ---
 
-# Spec-Driven Feature Planning
+# Living Execution Plan
 
 ## Task
 
-Turn a requirement into a small, buildable plan with explicit dependencies, risks, and non-goals.
+Turn a requirement into a self-contained, milestone-based execution plan that a
+new contributor can follow from design to working, verified behavior.
 
 ## Instructions
 
-1. Read `AGENTS.md` first for project conventions and architectural rules.
-2. Read `docs/workflows.md` if it exists to understand how the feature fits into the larger system.
-3. Clarify ambiguity before planning. Focus on:
-   - who the requirement serves
-   - hard constraints such as tech stack, compatibility, privacy, or performance
-   - what is explicitly out of scope
-4. Decompose the requirement into features that are each small enough for a single PR.
-5. For each feature, capture:
+1. Read `AGENTS.md` first for conventions, commands, architecture, and done criteria.
+2. Read `docs/workflows.md` if it exists.
+3. Read the most relevant code, interfaces, tests, and existing specs.
+4. Restate the needed context inside the plan so the plan is self-contained.
+5. Start the plan with:
+   - goal
+   - context
+   - constraints
+   - done when
+   - explicit non-goals
+6. Break the work into milestones small enough for one reviewable PR each.
+7. For each milestone, include:
    - scope
+   - files or components touched
    - dependencies
    - risk
    - size
-6. Determine build order from the dependencies.
-7. List explicit non-goals to prevent scope creep.
+   - validation commands
+   - expected observable result
+8. Explain build order from real dependencies.
+9. Add living sections and keep them current when revising the plan:
+   - Progress
+   - Decision Log
+   - Surprises & Discoveries
+   - Validation Notes
+10. Prefer proof-of-concept milestones for risky unknowns before full implementation.
 
 ## Gotchas
 
-- Do not jump into implementation details too early.
-- Do not create features that are too large for one reviewable PR.
-- Do not hide cross-feature dependencies inside vague wording.
-- Do not omit non-goals just because they seem obvious.
+- Do not make the plan depend on unstated prior discussion.
+- Do not create milestones that are too large to review safely.
+- Do not omit validation commands or acceptance checks.
+- Do not leave major ambiguity unresolved if it affects sequencing or scope.
 
 ## Expected Output
 
-- a concise overview
-- a feature list with scope, dependencies, risk, and size
+- self-contained overview
+- goal, context, constraints, done when, non-goals
+- milestone breakdown with dependencies, risks, and validation
 - explicit build order
-- architecture decisions only when they affect all features
-- at least two non-goals
+- living progress and decision sections
