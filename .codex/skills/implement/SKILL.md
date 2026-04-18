@@ -1,62 +1,80 @@
 ---
 name: implement
 description: >
-  Implement a feature milestone by milestone using the active execution plan
-  as the source of truth in repositories that use `AGENTS.md`,
-  `docs/workflows.md`, `docs/plans/`, `specs/[feature].md`, and
-  `specs/[feature].test.md`. Use when Codex should write tests first,
-  implement the minimum code to pass, run validation after each milestone,
-  and keep the living plan updated as work proceeds.
+  Implement a reviewed milestone using strict test-driven development. Use after spec, architecture, plan, and test-spec are ready, or in the fast lane after an explicit mini-spec and test checklist exist.
+argument-hint: [plan path, milestone ID, feature name, or implementation request]
 ---
 
-# Milestone-driven implementation
+# Test-driven implementation
 
-## Task
+You are implementing the smallest approved slice with tests first.
 
-Implement a feature by following the concrete plan, spec, and test spec
-strictly, with tests written before implementation.
+Do not expand scope. Do not silently alter the spec. Do not declare success without verification evidence.
 
-## Instructions
+## Inputs to read
 
-1. Read all required context before editing:
-   - `AGENTS.md`
-   - `docs/plan.md`, then the concrete active plan file
-   - `docs/workflows.md` when relevant
-   - the feature spec
-   - the test spec
-   - the existing files listed in the plan or spec touch points
-2. Treat the concrete plan file as the source of truth for milestone order.
-3. Work one milestone at a time. Do not expand scope to later milestones.
-4. Start each milestone with tests:
-   - write or update tests for the milestone
-   - run them and confirm they fail for the right reason when appropriate
-5. Implement the minimum code needed to satisfy the failing group.
-6. Re-run the relevant suite after each meaningful step.
-7. Run the milestone validation commands from the plan before moving on.
-8. If validation fails, stop and fix the failure before continuing.
-9. Verify every `MUST` requirement, edge case, and acceptance criterion
-   before closing the feature.
-10. Update the active plan as you go:
-    - `Progress`
-    - `Decision Log`
-    - `Surprises & Discoveries`
-    - `Validation Notes`
-11. Keep diffs scoped, and do not add features listed as non-goals.
-12. If the task changes externally observable behavior and no spec exists,
-    stop and create or request a spec first.
+Read before editing:
 
-## Gotchas
+- `AGENTS.md`
+- `.codex/CONSTITUTION.md` if present
+- concrete execution plan
+- feature spec
+- test spec
+- architecture doc and ADRs when relevant
+- code and tests listed in the milestone
+- existing patterns in neighboring files
+- CI or validation commands relevant to the milestone
 
-- Do not write implementation before the tests exist.
-- Do not treat a prematurely passing test as success; it may indicate the
-  wrong assertion or already-existing behavior.
-- Do not skip plan updates and leave the living plan stale.
-- Do not silently compensate for spec ambiguity with guesses.
+## Implementation loop
+
+For each milestone:
+
+1. Confirm milestone scope and requirements covered.
+2. Identify the tests from the test spec.
+3. Write or update the tests first.
+4. Run the narrowest relevant test command.
+5. Confirm new tests fail for the expected reason when feasible.
+6. Implement the minimum production code needed to pass.
+7. Run the narrow tests again.
+8. Refactor only within milestone scope.
+9. Run milestone validation commands.
+10. Update the plan’s progress, decisions, surprises, and validation notes.
+11. Stop before the next milestone unless the user asked to continue.
+
+## TDD rules
+
+- Tests first for new behavior.
+- Regression test first for bugs.
+- Minimal implementation to make tests pass.
+- Refactor after green, not before.
+- Delete or rewrite tests that pass for the wrong reason.
+- Do not write broad mocks that bypass the behavior under test.
+
+## Scope rules
+
+- Implement only approved requirements and milestone tasks.
+- Do not add unrelated refactors.
+- Do not change public behavior not covered by the spec.
+- If code reveals a spec or architecture gap, stop and update the artifact or document the blocker.
+- If validation fails, fix or report before moving on.
+
+## Plan update requirements
+
+Update the concrete plan with:
+
+- milestone progress;
+- decisions made during implementation;
+- surprises and discoveries;
+- validation commands run;
+- validation results;
+- known follow-ups or deferred work.
 
 ## Expected output
 
-- tests written first
-- minimal implementation to satisfy the current milestone
-- milestone validation results
-- an updated living plan
-- a note on any spec gaps or unresolved ambiguity
+- milestone implemented;
+- tests added or updated first;
+- validation commands and results;
+- files changed;
+- plan updates made;
+- blockers or spec gaps;
+- readiness statement for `code-review` or next milestone.

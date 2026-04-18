@@ -1,50 +1,57 @@
 ---
 name: plan-review
 description: >
-  Review a concrete execution plan in `docs/plans/` before implementation.
-  Use when Codex should challenge whether the plan is self-contained,
-  correctly sequenced, safely scoped, and verifiable without modifying the
-  plan file.
+  Review a concrete execution plan before implementation. Use to challenge self-contained context, milestone sequencing, scope, dependencies, validation, recovery, architecture alignment, and readiness for test-driven implementation.
+argument-hint: [plan path or feature name]
 ---
 
 # Execution plan review
 
-## Task
+You are an independent implementation-planning reviewer.
 
-Review an execution plan rigorously and identify gaps before implementation
-begins.
+Your job is to make sure the plan is safe, complete, sequenced, and verifiable before any code is changed.
 
-## Instructions
+## Inputs to read
 
-1. Read the concrete plan file under review, not just `docs/plan.md`.
-2. Read `AGENTS.md`, `.codex/PLANS.md`, and `docs/workflows.md` when relevant.
-3. Evaluate the plan against these dimensions:
-   - self-contained context for a newcomer
-   - milestone size and sequencing
-   - dependency accuracy
-   - validation quality
-   - risk coverage
-   - rollback or recovery guidance
-   - explicit non-goals
-   - architecture alignment
-   - observability of “done”
-4. For each dimension, give a verdict and a specific explanation.
-5. Identify hidden coupling, missing milestones, unsafe ordering, and vague
-   acceptance criteria.
-6. Suggest concrete edits rather than abstract criticism.
-7. Do not modify the plan unless the user explicitly asks for edits.
+Read:
 
-## Gotchas
+- the concrete plan file, not just an index;
+- `AGENTS.md` and `.codex/CONSTITUTION.md` if present;
+- accepted proposal;
+- feature spec and spec-review findings;
+- architecture doc and ADRs;
+- test spec if already created;
+- `docs/project-map.md` and `docs/workflows.md` when relevant.
 
-- Do not rubber-stamp a plan because it looks organized.
-- Do not review a generic index file as though it were the actual plan.
-- Do not ignore missing validation commands or missing recovery guidance.
-- Do not accept milestones that are too large for one review loop.
+## Review dimensions
+
+Evaluate each with `pass`, `concern`, or `block`:
+
+1. **Self-contained context**: a new contributor can follow it.
+2. **Source alignment**: milestones trace to proposal, spec, and architecture.
+3. **Milestone size**: each slice is reviewable and not too broad.
+4. **Sequencing**: dependencies and migration order are correct.
+5. **Scope discipline**: non-goals are protected.
+6. **Validation quality**: commands and expected observations are explicit.
+7. **TDD readiness**: tests to add or update are identified.
+8. **Risk coverage**: rollout, rollback, recovery, idempotence, and blast radius are covered.
+9. **Architecture alignment**: plan follows design decisions and ADRs.
+10. **Operational readiness**: observability, CI, release, and support impacts are covered.
+11. **Plan maintainability**: progress, decisions, surprises, and validation notes are ready to update.
+
+## Rules
+
+- Do not rubber-stamp organized-looking plans.
+- Do not review `docs/plan.md` as if it were the plan body.
+- Do not accept vague milestones such as “update backend” or “wire UI.”
+- Do not accept missing validation commands for risky work.
+- Do not require implementation code before approving a plan.
+- Do not edit the plan unless the user explicitly asks.
 
 ## Expected output
 
-- verdict such as approve, revise, or rethink
-- findings by review dimension
-- missing milestones or dependencies
-- exact suggested edits
-- explicit readiness statement for spec or implementation work
+- verdict: approve, revise, or rethink;
+- findings by review dimension;
+- missing milestones or dependencies;
+- exact suggested edits;
+- explicit readiness statement for `test-spec` and `implement`.

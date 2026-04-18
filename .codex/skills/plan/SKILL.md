@@ -1,67 +1,95 @@
 ---
 name: plan
 description: >
-  Create or revise a living execution plan for complex work in repositories
-  that use `AGENTS.md`, `docs/plan.md`, `docs/plans/`, `docs/workflows.md`,
-  and `specs/`. Use when the task spans multiple files or subsystems,
-  changes architecture or behavior, is risky or ambiguous, or should be
-  split into reviewable PR-sized milestones. New initiatives must create a
-  new file under `docs/plans/YYYY-MM-DD-slug.md` and update `docs/plan.md`
-  instead of overwriting an older plan.
+  Create or revise a living execution plan after proposal, spec, and architecture are stable enough to implement. Use for multi-file, multi-component, risky, or milestone-based work that should be split into reviewable PR-sized slices.
+argument-hint: [feature name, spec path, architecture path, or implementation goal]
 ---
 
 # Living execution plan
 
-## Task
+You are turning approved behavior and architecture into a safe, reviewable implementation path.
 
-Turn a requirement into a self-contained, milestone-based execution plan that
-a new contributor can follow from design to working, verified behavior.
+Planning happens after the spec defines behavior and architecture defines the design direction. Do not use this skill to decide what the product should be.
 
-## Instructions
+## Inputs to read
 
-1. Read `AGENTS.md` first for conventions, constraints, and done criteria.
-2. Read `docs/workflows.md` if the task touches an existing flow or handoff.
-3. Read `docs/plan.md` to understand current active and superseded work.
-4. Read the most relevant code, interfaces, tests, and existing specs.
-5. Decide whether the request is:
-   - a new initiative that needs a new file in `docs/plans/`, or
-   - a revision to an existing concrete plan file.
-6. Never start a new initiative by overwriting an older plan file.
-7. Make the plan self-contained. Restate the needed repo context inside the
-   plan instead of assuming prior chat context.
-8. Follow `.codex/PLANS.md` and include:
-   - purpose / big picture
-   - context and orientation
-   - constraints
-   - done when
-   - milestone-by-milestone work
-   - progress
-   - surprises & discoveries
-   - decision log
-   - validation and acceptance
-   - validation notes
-   - idempotence and recovery
-   - outcomes & retrospective
-9. Keep milestones small enough for one reviewable PR each.
-10. For each milestone, name the files or components touched, dependencies,
-    risk, validation commands, and expected observable result.
-11. Update `docs/plan.md` so it points at the active concrete plan file and
-    records completed or superseded plans.
-12. If the task is still only an idea and not approved, prefer
-    `docs/roadmap.md` over creating a full plan file.
+Read:
 
-## Gotchas
+- `AGENTS.md`
+- `.codex/CONSTITUTION.md` if present
+- `docs/plan.md` if present
+- accepted proposal
+- approved or reviewed feature spec
+- spec-review findings
+- architecture doc and ADRs when relevant
+- architecture-review findings when available
+- test-spec if already created
+- `docs/project-map.md`
+- relevant code, tests, CI, and workflows
 
-- Do not write a one-page summary that lacks commands, acceptance checks, or
-  file paths.
-- Do not rely on `docs/plan.md` as the plan body.
-- Do not create milestones that are too large to review safely.
-- Do not omit recovery steps for risky changes.
-- Do not leave major ambiguity unresolved if it affects scope or sequencing.
+## Output paths
+
+Prefer:
+
+```text
+docs/plans/YYYY-MM-DD-slug.md
+docs/plan.md
+```
+
+Create a new dated plan for new initiatives. Update `docs/plan.md` as an index of active, completed, and superseded plans.
+
+## Required sections
+
+1. **Status**: draft, reviewed, active, complete, superseded.
+2. **Purpose / big picture**: why this implementation plan exists.
+3. **Source artifacts**: proposal, spec, architecture, test spec.
+4. **Context and orientation**: files, modules, flows, and constraints a new contributor needs.
+5. **Non-goals**: scope guardrails from proposal/spec.
+6. **Requirements covered**: list requirement IDs and where they will be implemented.
+7. **Milestones**: small reviewable slices.
+8. **Validation plan**: commands and manual checks per milestone.
+9. **Risks and recovery**: rollback, feature flags, migration recovery, idempotence.
+10. **Dependencies**: internal and external sequencing constraints.
+11. **Progress**: checkboxes or status per milestone.
+12. **Decision log**: implementation decisions made during planning.
+13. **Surprises and discoveries**: updated during implementation.
+14. **Validation notes**: evidence from implementation.
+15. **Outcome and retrospective**: filled after completion.
+
+## Milestone format
+
+Each milestone should include:
+
+```text
+M1. Title
+- Goal:
+- Requirements:
+- Files/components likely touched:
+- Dependencies:
+- Tests to add/update:
+- Implementation steps:
+- Validation commands:
+- Expected observable result:
+- Risks:
+- Rollback/recovery:
+```
+
+Milestones should be small enough for one review loop and preferably one PR.
+
+## Planning rules
+
+- Derive work from spec requirements and architecture decisions.
+- Do not add behavior not in the spec.
+- Do not hide risky work in vague milestones.
+- Do not omit validation commands.
+- Do not create a plan that only the current chat context can understand.
+- Do not proceed to implementation until `plan-review` and `test-spec` are ready unless using the fast lane.
+- If planning reveals spec or architecture gaps, update those artifacts first.
 
 ## Expected output
 
-- a concrete target plan file path
-- a self-contained living plan
-- an updated `docs/plan.md` index entry
-- explicit milestones, validation commands, and non-goals
+- concrete plan file path;
+- updated `docs/plan.md` index when applicable;
+- milestone-by-milestone plan;
+- validation and recovery strategy;
+- readiness statement for `plan-review` and `test-spec`.
