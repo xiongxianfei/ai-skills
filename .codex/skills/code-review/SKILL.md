@@ -1,59 +1,75 @@
 ---
 name: code-review
 description: >
-  Perform an independent staff-level implementation review for
-  spec-driven repositories using `AGENTS.md`, the concrete plan file,
-  feature specs, and test specs. Use when Codex should review an
-  implementation with fresh eyes against the contract, the actual diff,
-  tests, and runtime-flow risks.
+  Perform an independent implementation review against the spec, architecture, plan, test spec, actual diff, and validation evidence. Use after implementation or before PR readiness decisions.
+argument-hint: [branch, diff, plan path, spec path, or feature name]
 ---
 
 # Independent implementation review
 
-## Task
+You are reviewing with fresh eyes.
 
-Review an implementation rigorously against its plan, spec, test spec, and
-project conventions.
+Your job is to determine whether the implementation satisfies the approved contract safely, not whether it merely looks plausible.
 
-## Instructions
+## Inputs to read
 
-1. Prefer a fresh session or otherwise treat the task as an independent
-   review.
-2. Read:
-   - `AGENTS.md`
-   - `docs/plan.md`, then the concrete plan file
-   - `docs/workflows.md` when relevant
-   - the feature spec
-   - the test spec
-   - the changed source files
-   - the reported test or validation results
-3. Run or reason through the relevant tests when possible.
-4. Check every `MUST` requirement for compliance.
-5. Check every named edge case in both the code and the tests.
-6. Evaluate:
-   - spec compliance
-   - milestone acceptance
-   - error handling
-   - regression risk
-   - test quality
-   - scope discipline
-   - unnecessary complexity
-   - whether the living plan and docs were updated appropriately
-7. Classify issues by severity and provide concrete fix suggestions.
-8. Reinforce good patterns when they are present.
+Read:
 
-## Gotchas
+- actual diff or changed files;
+- feature spec;
+- test spec;
+- concrete plan;
+- architecture doc and ADRs when relevant;
+- plan validation notes;
+- test and CI results;
+- `AGENTS.md` and `.codex/CONSTITUTION.md`;
+- related code paths and tests when needed.
 
+Prefer a fresh session or intentionally reset assumptions.
+
+## Review dimensions
+
+Evaluate each with `pass`, `concern`, or `block`:
+
+1. **Requirement compliance**: every relevant `MUST` is satisfied.
+2. **Non-goal protection**: diff does not add excluded behavior.
+3. **Architecture alignment**: implementation follows design decisions and boundaries.
+4. **Test quality**: tests assert behavior, not implementation trivia.
+5. **Coverage completeness**: requirements, examples, edge cases, and regressions are covered.
+6. **Error handling**: failures, invalid input, permissions, and partial states are handled.
+7. **Security/privacy**: no secrets, leaks, auth bypass, injection, unsafe logging, or exposure.
+8. **Compatibility/migration**: old data/clients/configs are handled as specified.
+9. **Performance/scalability**: no obvious avoidable bottleneck or unbounded work.
+10. **Simplicity/maintainability**: implementation is no more complex than needed.
+11. **Observability**: required logs, metrics, traces, or audit events are present.
+12. **Validation evidence**: claimed commands/results are present and credible.
+13. **Artifact updates**: specs, plans, architecture docs, and learnings are updated when reality changed.
+
+## Severity
+
+Use:
+
+- `blocker`: unsafe to merge or violates a `MUST`.
+- `major`: should be fixed before PR approval.
+- `minor`: improvement that does not block.
+- `nit`: optional style/readability suggestion.
+- `positive`: good pattern worth keeping.
+
+## Rules
+
+- Do not confuse passing tests with compliance.
 - Do not spot-check only a few requirements.
-- Do not confuse passing tests with actual compliance.
-- Do not collapse all issues into one generic verdict.
-- Do not skip positive notes when the code demonstrates good patterns worth
-  repeating.
+- Do not review from memory; use the actual diff.
+- Do not request broad rewrites when a targeted fix is enough.
+- Do not skip positive notes for good patterns.
+- Do not approve if verification evidence is missing for critical behavior.
 
 ## Expected output
 
-- verdict such as approve, request changes, or block
-- requirement-by-requirement compliance findings
-- edge case handling and test coverage findings
-- issues by severity with specific fix suggestions
-- positive notes and optional improvements
+- verdict: approve, request changes, or block;
+- requirement-by-requirement compliance summary when useful;
+- issues by severity with exact file/path references;
+- test coverage findings;
+- validation evidence assessment;
+- positive notes;
+- readiness statement for `verify`, more implementation, or `pr`.

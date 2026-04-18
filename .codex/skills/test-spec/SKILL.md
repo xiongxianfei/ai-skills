@@ -1,46 +1,93 @@
 ---
 name: test-spec
 description: >
-  Generate `specs/[feature].test.md` from an approved feature spec. Use when
-  Codex should map requirements, examples, and edge cases into traceable
-  unit, integration, and end-to-end tests before writing test code.
+  Generate a traceable test specification from an approved feature spec and execution plan before writing test code or production code. Use to map requirements, examples, edge cases, architecture boundaries, and milestones into concrete tests.
+argument-hint: [feature spec path, plan path, or feature name]
 ---
 
 # Test spec authoring
 
-## Task
+You are designing the proof before implementation.
 
-Turn an approved feature spec into a concrete, traceable test plan.
+The test spec defines how the team will know the implementation satisfies the behavioral contract.
 
-## Instructions
+## Inputs to read
 
-1. Read the approved feature spec first.
-2. Read `AGENTS.md` for testing conventions and commands.
-3. Read the concrete plan file if it contains milestone-specific validation
-   commands or boundary notes that affect the tests.
-4. Extract every requirement ID, edge case, and example.
-5. Create test IDs such as `T1`, `T2`, `T3`.
-6. Map each requirement ID to one or more tests.
-7. Include the right level of coverage:
-   - unit tests for local logic
-   - integration tests for boundaries and wiring
-   - end-to-end or smoke tests for user-visible flows when needed
-8. Use concrete fixtures, inputs, and expected outputs whenever possible.
-9. Add explicit exclusions under `What not to test`.
-10. Flag vague or untestable requirements instead of pretending they are
-    covered.
+Read:
 
-## Gotchas
+- approved or reviewed feature spec;
+- spec-review findings;
+- architecture doc and ADRs when relevant;
+- concrete execution plan;
+- `AGENTS.md` and `.codex/CONSTITUTION.md` if present;
+- existing test conventions, fixtures, helpers, and CI commands;
+- related tests for similar behavior.
 
-- Do not leave a `MUST` requirement uncovered.
-- Do not generate tests from an unreviewed or unstable spec.
-- Do not skip integration boundaries.
-- Do not invent coverage for behavior the spec does not define.
+## Output path
+
+Prefer:
+
+```text
+specs/slug.test.md
+```
+
+## Required sections
+
+1. **Status**: draft, reviewed, active, complete.
+2. **Related spec and plan**.
+3. **Testing strategy**: unit, integration, end-to-end, smoke, manual, contract, migration.
+4. **Requirement coverage map**: every requirement ID maps to one or more tests or explicit manual verification.
+5. **Example coverage map**: every example maps to a test when feasible.
+6. **Edge case coverage**.
+7. **Test cases** with stable IDs.
+8. **Fixtures and data**.
+9. **Mocking/stubbing policy**.
+10. **Migration or compatibility tests** when relevant.
+11. **Observability verification** when logs, metrics, traces, or audit events are required.
+12. **Security/privacy verification** when relevant.
+13. **Performance checks** when relevant.
+14. **Manual QA checklist** when automation is insufficient.
+15. **What not to test** and why.
+16. **Uncovered gaps** that must return to spec or architecture.
+
+## Test case format
+
+Use:
+
+```text
+T1. Title
+- Covers: R1, R3, E2
+- Level: unit | integration | e2e | smoke | manual
+- Fixture/setup:
+- Steps:
+- Expected result:
+- Failure proves:
+- Automation location:
+```
+
+## Coverage rules
+
+- Every `MUST` requirement needs coverage.
+- Every error behavior needs coverage.
+- Every migration or compatibility claim needs coverage or explicit manual verification.
+- Every architectural boundary that could break wiring needs an integration or contract test.
+- Bugs require a regression test that fails before the fix when feasible.
+
+## Rules
+
+- Do not generate tests from an unreviewed or unstable spec unless using the fast lane and documenting the risk.
+- Do not invent behavior not specified.
+- Do not mark a requirement covered by a test that does not assert it.
+- Do not rely only on snapshots for behavioral requirements.
+- Do not skip integration tests where the risk is at a boundary.
+- Do not hide untestable requirements; send them back to `spec-review`.
 
 ## Expected output
 
-- grouped test cases
-- requirement-to-test coverage map
-- concrete fixtures or scenarios
-- explicit exclusions
-- uncovered gaps, if any
+- test spec path;
+- grouped test cases;
+- requirement-to-test coverage map;
+- fixtures and commands;
+- explicit exclusions;
+- uncovered gaps, if any;
+- readiness statement for `implement`.

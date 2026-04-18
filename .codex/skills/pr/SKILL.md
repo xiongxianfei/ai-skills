@@ -1,45 +1,112 @@
 ---
 name: pr
 description: >
-  Prepare a completed feature for pull request creation in repositories that
-  use concrete execution plans, specs, test specs, and GitHub workflows.
-  Use when Codex should verify readiness, summarize the real diff, and draft
-  a concise PR title and body grounded in what was actually verified.
+  Prepare a completed, verified change for pull request review. Use when the branch is ready or nearly ready and the agent should summarize the real diff, validation evidence, spec compliance, risks, and reviewer notes.
+argument-hint: [branch, feature name, plan path, or PR request]
 ---
 
 # Pull request preparation
 
-## Task
+You are preparing the change for human review.
 
-Prepare a completed feature for review with a clear PR summary grounded in
-the spec, the plan, and the actual diff.
+The PR body should be grounded in the actual diff and verification evidence, not chat memory.
 
-## Instructions
+## Inputs to read
 
-1. Read the concrete plan file, feature spec, and acceptance criteria.
-2. Verify the relevant tests and validation commands passed before preparing the PR.
-3. Check git status for uncommitted changes.
-4. Confirm the branch is based on the correct base branch.
-5. Summarize the change from the actual diff, not memory.
-6. Draft a PR body that covers:
-   - what changed
-   - plan and spec references
-   - test and validation results
-   - compliance with requirements and non-goals
-   - reviewer notes
-   - post-merge follow-ups
-7. Create or propose the PR only if the branch is ready.
+Read:
 
-## Gotchas
+- actual diff and git status;
+- proposal;
+- feature spec;
+- test spec;
+- architecture doc and ADRs when relevant;
+- concrete plan and validation notes;
+- explain-change artifact if present;
+- verification report;
+- CI status when available;
+- `AGENTS.md` and `.codex/CONSTITUTION.md` if relevant.
 
-- Do not open a PR if tests are failing.
-- Do not open a PR with uncommitted changes unless the user explicitly wants that workflow.
-- Do not omit the concrete plan and spec references.
-- Do not claim CI passed unless it actually did.
+## Readiness checks
+
+Before drafting or opening a PR, check:
+
+1. working tree status;
+2. branch and base branch;
+3. commits are present and scoped;
+4. tests and validation commands passed or gaps are documented;
+5. CI status is known when available;
+6. artifacts are updated;
+7. no secrets, credentials, local paths, or debug-only changes are included;
+8. generated files and migrations are intentional;
+9. reviewers have enough context.
+
+## PR body structure
+
+Use this template:
+
+```markdown
+## Summary
+- ...
+
+## Why
+- ...
+
+## Spec / plan / architecture
+- Proposal: ...
+- Spec: ...
+- Test spec: ...
+- Architecture / ADRs: ...
+- Plan: ...
+
+## What changed
+- ...
+
+## Tests and verification
+- [x] `command` — result
+- [ ] CI — pending / not available / passed
+
+## Requirement coverage
+- R1 → T1, T2 → files/evidence
+- R2 → T3 → files/evidence
+
+## Risks and rollback
+- ...
+
+## Reviewer notes
+- ...
+
+## Follow-ups
+- ...
+```
+
+## Title guidance
+
+Use a concise title:
+
+```text
+<type>: <user-visible outcome>
+```
+
+Examples:
+
+- `feat: add resumable import validation`
+- `fix: preserve filters after dashboard refresh`
+- `refactor: isolate billing provider adapter`
+
+## Rules
+
+- Do not open or claim to open a PR unless the tool/action actually did it.
+- Do not say CI passed unless it passed.
+- Do not omit failed or unrun validation.
+- Do not summarize from memory when a diff is available.
+- Do not bury known risks.
+- Do not include massive internal detail that obscures review.
 
 ## Expected output
 
-- readiness check results
-- concise change summary from diff
-- draft PR title and body or a created PR when appropriate
-- explicit blockers if the branch is not ready
+- readiness check results;
+- PR title;
+- PR body;
+- blockers if not ready;
+- explicit validation and CI status;
+- recommended reviewers or review focus when useful.

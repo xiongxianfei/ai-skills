@@ -1,58 +1,100 @@
 ---
 name: spec
 description: >
-  Write a contract-level feature spec in `specs/[feature].md` for changes
-  that affect externally observable behavior such as UI, APIs, config, data
-  contracts, error behavior, or safety-sensitive logic. Use after a concrete
-  execution plan exists and is stable enough to define the behavior
-  precisely.
+  Write a contract-level feature specification before execution planning or implementation. Use for changes that affect externally observable behavior, APIs, UI, config, data contracts, error behavior, compatibility, security, or safety-sensitive logic.
+argument-hint: [proposal path, feature name, behavior request, or issue number]
 ---
 
 # Feature spec authoring
 
-## Task
+You are writing the behavioral contract for the change.
 
-Write a precise, testable feature spec that defines what the system must do
-without locking in unnecessary implementation details.
+The spec defines **what the system must do** and **how the behavior will be observed**. It should avoid unnecessary internal implementation detail.
 
-## Instructions
+## Inputs to read
 
-1. Read `AGENTS.md`.
-2. Read `docs/plan.md`, then open the concrete plan file this spec follows.
-3. Read `docs/workflows.md` if the feature touches an existing flow.
-4. Read related specs and interfaces for naming and contract consistency.
-5. Use this skill only for behavior or contract changes worth specifying.
-6. Start with concrete examples before abstract requirements.
-7. Derive requirement IDs such as `R1`, `R2`, `R3` and use normative terms
-   like `MUST`, `SHOULD`, and `MUST NOT`.
-8. Include:
-   - goal and context
-   - related plan reference
-   - inputs and outputs
-   - invariants
-   - error handling and boundary behavior
-   - compatibility or migration expectations if relevant
-   - observability expectations if relevant
-   - explicit edge cases
-   - explicit non-goals
-   - acceptance criteria
-9. Keep implementation details out unless they are externally observable
-   constraints.
-10. If the plan is still unstable, say so instead of freezing a shaky spec.
+Read, if present:
 
-## Gotchas
+- `AGENTS.md`
+- `.codex/CONSTITUTION.md`
+- accepted proposal or issue
+- exploration and research artifacts
+- `docs/project-map.md`
+- related specs
+- related architecture docs or ADRs
+- existing interfaces, schemas, APIs, UI flows, config, or data contracts
 
-- Do not write vague or untestable `MUST` requirements.
-- Do not hide edge cases inside prose.
-- Do not specify internal class structure unless it affects the contract.
-- Do not derive a spec from only `docs/plan.md` if the real plan is in
-  `docs/plans/`.
+A concrete execution plan is not required before writing the spec. In this workflow, the spec normally comes before the execution plan.
+
+## Output path
+
+Prefer:
+
+```text
+specs/slug.md
+```
+
+Do not overwrite unrelated specs. If changing an existing behavior, update the existing spec and preserve history through changelog notes when useful.
+
+## Required sections
+
+1. **Status**: draft, reviewed, approved, superseded.
+2. **Related proposal**: link to proposal or issue.
+3. **Goal and context**: what behavior is being defined and why.
+4. **Glossary**: domain terms that affect interpretation.
+5. **Examples first**: concrete before abstract.
+6. **Requirements**: stable IDs with normative language.
+7. **Inputs and outputs**: user input, API input, config, data, events, responses.
+8. **State and invariants**: what must remain true.
+9. **Error and boundary behavior**: invalid input, partial failure, timeouts, permissions, empty states.
+10. **Compatibility and migration**: old clients, old data, flags, deprecation, rollback.
+11. **Observability**: logs, metrics, traces, audit events, user-visible status.
+12. **Security and privacy**: auth, authorization, secrets, data exposure, abuse cases.
+13. **Accessibility and UX** when UI is involved.
+14. **Performance expectations** when user or system behavior depends on them.
+15. **Edge cases**: explicit, numbered cases.
+16. **Non-goals**: behaviors intentionally not covered.
+17. **Acceptance criteria**: observable outcomes that can be verified.
+18. **Open questions**: only if they do not invalidate the spec.
+
+## Requirement format
+
+Use stable requirement IDs:
+
+```text
+R1. The system MUST ...
+R2. The API MUST NOT ...
+R3. The UI SHOULD ... because ...
+```
+
+Every `MUST` must be testable or explicitly justified as manually verifiable.
+
+## Example format
+
+Prefer concrete examples:
+
+```text
+Example E1: valid input creates a record
+Given ...
+When ...
+Then ...
+```
+
+## Rules
+
+- Do not bury requirements in prose.
+- Do not use vague words such as “fast,” “intuitive,” or “robust” without measurable criteria.
+- Do not specify internal class names, functions, or file paths unless they are externally observable contracts.
+- Do not skip failure behavior.
+- Do not skip compatibility expectations.
+- Do not invent requirements that the proposal excludes.
+- If the behavior is too unclear to specify, return to `explore`, `research`, or `proposal`.
 
 ## Expected output
 
-- examples first
-- requirement IDs with normative language
-- interface and failure expectations
-- explicit edge cases and non-goals
-- acceptance criteria
-- reference to the concrete plan file
+- spec file path;
+- examples first;
+- requirement IDs with normative language;
+- explicit edge cases, non-goals, and acceptance criteria;
+- uncovered ambiguities;
+- readiness statement for `spec-review`.
