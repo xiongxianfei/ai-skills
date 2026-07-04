@@ -12,10 +12,10 @@ architecture_assessment:
 test_spec: specs/flashcard-and-quiz-skills.test.md
 plan: docs/plans/2026-07-04-flashcard-and-quiz-skills.md
 review_log: docs/changes/2026-07-04-flashcard-and-quiz-skills/review-log.md
-current_milestone: M3
-next_stage: code-review M3
-milestone_state: review-requested
-last_reviewed_milestone: M2
+current_milestone: final closeout
+next_stage: final closeout
+milestone_state: planned
+last_reviewed_milestone: M3
 last_review_status: clean-with-notes
 open_findings: []
 workflow:
@@ -135,3 +135,31 @@ validation:
     stage: implement M3
     status: passed
     notes: "Change metadata parsed successfully after M3 lifecycle updates."
+  - command: python tests/validate_skills.py
+    stage: code-review M3
+    status: passed
+    notes: "Reviewer rerun passed for 13 skills with the known non-blocking grandfathered-evals warning for unrelated grandfathered skills."
+  - command: python -m unittest discover tests
+    stage: code-review M3
+    status: passed
+    notes: "Reviewer rerun passed; ran 31 tests."
+  - command: python tests/check_readme_sync.py
+    stage: code-review M3
+    status: passed
+    notes: "Reviewer rerun passed."
+  - command: git diff --check HEAD^..HEAD
+    stage: code-review M3
+    status: passed
+    notes: "Reviewer rerun found no whitespace errors in the reviewed commit range."
+  - command: wc -l skills/flashcard-generator/SKILL.md skills/quiz-generator/SKILL.md
+    stage: code-review M3
+    status: passed
+    notes: "flashcard-generator 136 lines; quiz-generator 158 lines."
+  - command: python - <<'PY' ... yaml ok
+    stage: code-review M3
+    status: passed
+    notes: "Reviewer rerun parsed change metadata successfully."
+  - command: git diff --name-only HEAD^..HEAD | rg '(^\\.github/|^tests/validate_skills.py$|^install\\.sh$|^skills/(communicator|doctor|email-drafter|fitness-coach|journaling|language-tutor|nvc|oscp-coach|study-planner|editor|restaurant-menu-advisor)/)' || true
+    stage: code-review M3
+    status: passed
+    notes: "Produced no matches; no CI, validator, installer, or unrelated skill changes in M3."

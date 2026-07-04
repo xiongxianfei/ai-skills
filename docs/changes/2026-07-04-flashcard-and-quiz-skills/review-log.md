@@ -49,3 +49,11 @@
 - Material findings: none
 - Outcome: M2 is closed; implementation may continue with M3.
 - Resolution: not required
+
+## Code Review M3 R1
+
+- Path: `docs/changes/2026-07-04-flashcard-and-quiz-skills/reviews/code-review-m3-r1.md`
+- Status: clean-with-notes
+- Material findings: none
+- Outcome: M3 is closed; no in-scope implementation milestones remain; final closeout may proceed.
+- Resolution: not required

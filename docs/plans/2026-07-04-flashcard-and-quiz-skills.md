@@ -58,14 +58,14 @@ No runtime server, direct export integration, external service, generated asset,
 
 ## Current Handoff Summary
 
-- Current milestone: M3
-- Current milestone state: review-requested
+- Current milestone: final closeout
+- Current milestone state: planned
 - Last reviewed milestone: M2
-- Review status: M3 implementation complete; code-review pending
-- Remaining in-scope implementation milestones: M3
-- Next stage: code-review M3
-- Final closeout readiness: not-ready
-- Reason final closeout is or is not ready: M3 is awaiting code-review; review-resolution when triggered, explain-change, verify, and PR handoff remain.
+- Review status: M3 code-review R1 clean-with-notes; no review-resolution required
+- Remaining in-scope implementation milestones: none
+- Next stage: final closeout
+- Final closeout readiness: ready-for-final-closeout
+- Reason final closeout is or is not ready: implementation milestones are closed; explain-change, verify, and PR handoff remain as final closeout stages.
 
 ## Milestones
 
@@ -143,7 +143,7 @@ No runtime server, direct export integration, external service, generated asset,
 
 ### M3. Post-Change Evidence And Lifecycle Update
 
-- Milestone state: review-requested
+- Milestone state: closed
 - Goal: Record prompt-inspection evidence, manual smoke evidence where feasible, and final planned validation before code-review.
 - Requirements: R8-R20, R26, R33-R35, AC1-AC12
 - Files/components likely touched:
@@ -163,7 +163,7 @@ No runtime server, direct export integration, external service, generated asset,
   - `python -m unittest discover tests`
   - `python tests/check_readme_sync.py`
   - `git diff --check`
-- Result: Post-change prompt-inspection and manual smoke evidence recorded; final planned validation passed; ready for code-review M3.
+- Result: Post-change prompt-inspection and manual smoke evidence recorded; final planned validation passed; code-review M3 R1 returned clean-with-notes and closed M3.
 - Risks:
   - Manual smoke may reveal prompt ambiguity late.
   - Evidence may show the schema reference and output contract disagree.
@@ -211,6 +211,7 @@ No runtime server, direct export integration, external service, generated asset,
 - 2026-07-04: Code-review M2 R1 returned clean-with-notes and closed M2.
 - 2026-07-04: Began M3 by recording post-change prompt-inspection and manual smoke evidence.
 - 2026-07-04: Completed M3 evidence and validation, then moved M3 to code-review handoff.
+- 2026-07-04: Code-review M3 R1 returned clean-with-notes and closed M3.
 
 ## Decision log
 
@@ -260,6 +261,14 @@ No runtime server, direct export integration, external service, generated asset,
   - `git diff --check`
   - `wc -l skills/flashcard-generator/SKILL.md skills/quiz-generator/SKILL.md`
   - `python - <<'PY' ... yaml ok`
+- Code-review M3 R1 reviewer validation passed:
+  - `python tests/validate_skills.py`
+  - `python -m unittest discover tests`
+  - `python tests/check_readme_sync.py`
+  - `git diff --check HEAD^..HEAD`
+  - `wc -l skills/flashcard-generator/SKILL.md skills/quiz-generator/SKILL.md`
+  - `python - <<'PY' ... yaml ok`
+  - scoped diff-name check for CI, validator, installer, and unrelated skill changes
 
 ## Outcome and retrospective
 
@@ -268,4 +277,4 @@ No runtime server, direct export integration, external service, generated asset,
 ## Readiness
 
 - See `Current Handoff Summary`.
-- Ready for `code-review M3`.
+- Ready for final closeout.
