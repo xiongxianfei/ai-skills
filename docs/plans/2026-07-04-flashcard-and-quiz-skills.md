@@ -60,7 +60,7 @@ No runtime server, direct export integration, external service, generated asset,
 
 - Current milestone: final closeout
 - Current milestone state: planned
-- Last reviewed milestone: M2
+- Last reviewed milestone: M3
 - Review status: M3 code-review R1 clean-with-notes; no review-resolution required
 - Remaining in-scope implementation milestones: none
 - Next stage: final closeout
