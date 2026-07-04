@@ -70,7 +70,7 @@ For MCQs:
 - Avoid "all of the above" and "none of the above" by default.
 - Explain why each option is right or wrong.
 
-If the user asks for both flashcards and a quiz, keep the quiz output separate from flashcard output and use a separate canonical JSON payload for the quiz.
+If the user asks for both flashcards and a quiz, extract shared learning objectives and a compact knowledge map once, then keep the quiz output separate from flashcard output and use a separate canonical JSON payload for the quiz.
 
 ## Source Boundaries
 

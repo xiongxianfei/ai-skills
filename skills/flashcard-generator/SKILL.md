@@ -65,7 +65,7 @@ Default assumptions when the user does not specify:
 - Include enough context for project-specific or ambiguous terms.
 - Cloze cards need enough surrounding context to be answerable.
 - If the source is too thin for the requested count or difficulty, say so and produce only supportable cards.
-- If the user asks for both flashcards and a quiz, keep the flashcard output separate from quiz output and use a separate canonical JSON payload for the flashcards.
+- If the user asks for both flashcards and a quiz, extract shared learning objectives and a compact knowledge map once, then keep the flashcard output separate from quiz output and use a separate canonical JSON payload for the flashcards.
 
 ## Source Boundaries
 
