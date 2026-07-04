@@ -12,9 +12,9 @@ architecture_assessment:
 test_spec: specs/flashcard-and-quiz-skills.test.md
 plan: docs/plans/2026-07-04-flashcard-and-quiz-skills.md
 review_log: docs/changes/2026-07-04-flashcard-and-quiz-skills/review-log.md
-current_milestone: final closeout
-next_stage: final closeout
-milestone_state: planned
+current_milestone: final closeout branch-ready
+next_stage: pr
+milestone_state: branch-ready
 last_reviewed_milestone: M3
 last_review_status: clean-with-notes
 open_findings: []
@@ -163,3 +163,47 @@ validation:
     stage: code-review M3
     status: passed
     notes: "Produced no matches; no CI, validator, installer, or unrelated skill changes in M3."
+  - command: python tests/validate_skills.py
+    stage: verify
+    status: passed
+    notes: "Validated 13 skills with the known non-blocking grandfathered-evals warning for unrelated older skills."
+  - command: python -m unittest discover tests
+    stage: verify
+    status: passed
+    notes: "Ran 31 tests."
+  - command: python tests/check_readme_sync.py
+    stage: verify
+    status: passed
+    notes: "README sync check passed."
+  - command: git diff --check main...HEAD
+    stage: verify
+    status: passed
+    notes: "No whitespace errors in final branch diff."
+  - command: python - <<'PY' ... json/yaml ok
+    stage: verify
+    status: passed
+    notes: "Parsed change metadata, both eval fixtures, and both reference schemas."
+  - command: wc -l skills/flashcard-generator/SKILL.md skills/quiz-generator/SKILL.md
+    stage: verify
+    status: passed
+    notes: "flashcard-generator 136 lines; quiz-generator 158 lines."
+  - command: direct validate_cases_file invocation for flashcard-generator and quiz-generator
+    stage: verify
+    status: passed
+    notes: "Direct eval fixture validation passed."
+  - command: scoped no-integration diff-name check
+    stage: verify
+    status: passed
+    notes: "No CI, validator, installer, or unrelated skill changes."
+  - command: lifecycle grep across active plan, change.yaml, and docs/plan.md
+    stage: verify
+    status: passed
+    notes: "Final closeout state is internally consistent."
+  - command: git merge-base HEAD main and git rev-parse main
+    stage: verify
+    status: passed
+    notes: "Branch base equals current local main at 4ae3baaa555c792a81fb7c558616bfe5e09ad4bf."
+  - command: git status --short
+    stage: verify
+    status: passed
+    notes: "Working tree clean before verify artifact edits."

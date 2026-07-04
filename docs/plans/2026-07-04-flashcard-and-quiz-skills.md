@@ -59,13 +59,13 @@ No runtime server, direct export integration, external service, generated asset,
 ## Current Handoff Summary
 
 - Current milestone: final closeout
-- Current milestone state: planned
+- Current milestone state: branch-ready
 - Last reviewed milestone: M3
 - Review status: M3 code-review R1 clean-with-notes; no review-resolution required
 - Remaining in-scope implementation milestones: none
-- Next stage: final closeout
-- Final closeout readiness: ready-for-final-closeout
-- Reason final closeout is or is not ready: implementation milestones are closed; explain-change, verify, and PR handoff remain as final closeout stages.
+- Next stage: pr
+- Final closeout readiness: branch-ready for PR handoff
+- Reason final closeout is or is not ready: implementation, reviews, explain-change, and verification are complete; PR handoff remains.
 
 ## Milestones
 
@@ -212,6 +212,7 @@ No runtime server, direct export integration, external service, generated asset,
 - 2026-07-04: Began M3 by recording post-change prompt-inspection and manual smoke evidence.
 - 2026-07-04: Completed M3 evidence and validation, then moved M3 to code-review handoff.
 - 2026-07-04: Code-review M3 R1 returned clean-with-notes and closed M3.
+- 2026-07-04: Verify passed and recorded branch-ready evidence in `docs/changes/2026-07-04-flashcard-and-quiz-skills/verify-report.md`.
 
 ## Decision log
 
@@ -269,6 +270,17 @@ No runtime server, direct export integration, external service, generated asset,
   - `wc -l skills/flashcard-generator/SKILL.md skills/quiz-generator/SKILL.md`
   - `python - <<'PY' ... yaml ok`
   - scoped diff-name check for CI, validator, installer, and unrelated skill changes
+- Verify validation passed:
+  - `python tests/validate_skills.py`
+  - `python -m unittest discover tests`
+  - `python tests/check_readme_sync.py`
+  - `git diff --check main...HEAD`
+  - `python - <<'PY' ... json/yaml ok`
+  - `wc -l skills/flashcard-generator/SKILL.md skills/quiz-generator/SKILL.md`
+  - direct eval fixture validation for both new skills
+  - scoped no-integration diff-name check
+  - lifecycle state grep
+  - `git merge-base HEAD main` and `git rev-parse main`
 
 ## Outcome and retrospective
 
@@ -277,4 +289,4 @@ No runtime server, direct export integration, external service, generated asset,
 ## Readiness
 
 - See `Current Handoff Summary`.
-- Ready for final closeout.
+- Branch-ready for PR handoff.
