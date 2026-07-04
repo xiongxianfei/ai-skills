@@ -57,3 +57,11 @@
 - Material findings: none
 - Outcome: M3 is closed; no in-scope implementation milestones remain; final closeout may proceed.
 - Resolution: not required
+
+## Code Review Metadata Cleanup R1
+
+- Path: `docs/changes/2026-07-04-flashcard-and-quiz-skills/reviews/code-review-metadata-cleanup-r1.md`
+- Status: clean-with-notes
+- Material findings: none
+- Outcome: isolated final handoff metadata cleanup is closed; final closeout remains next.
+- Resolution: not required
