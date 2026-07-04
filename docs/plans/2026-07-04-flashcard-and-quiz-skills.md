@@ -58,20 +58,20 @@ No runtime server, direct export integration, external service, generated asset,
 
 ## Current Handoff Summary
 
-- Current milestone: M1
-- Current milestone state: review-requested
-- Last reviewed milestone: none
-- Review status: M1 implementation complete; code-review pending
-- Remaining in-scope implementation milestones: M1, M2, M3
-- Next stage: code-review M1
+- Current milestone: M2
+- Current milestone state: planned
+- Last reviewed milestone: M1
+- Review status: code-review M1 R1 clean-with-notes; no material findings
+- Remaining in-scope implementation milestones: M2, M3
+- Next stage: implement M2
 - Final closeout readiness: not-ready
-- Reason final closeout is or is not ready: M1 is awaiting code-review; M2 and M3 remain planned; review-resolution when triggered, explain-change, verify, and PR handoff remain.
+- Reason final closeout is or is not ready: M2 and M3 remain planned; review-resolution when triggered, explain-change, verify, and PR handoff remain.
 
 ## Milestones
 
 ### M1. Eval Fixtures And Trigger Boundaries
 
-- Milestone state: review-requested
+- Milestone state: closed
 - Goal: Add eval fixtures for both new skills before prompt implementation, including trigger boundaries and source-grounding edge cases.
 - Requirements: R5-R7, R27-R30, AC1, AC2, AC4, AC6, AC7
 - Files/components likely touched:
@@ -206,6 +206,7 @@ No runtime server, direct export integration, external service, generated asset,
 
 - 2026-07-04: Created plan after spec-review R1 approved the spec and recorded no architecture artifact required.
 - 2026-07-04: Implemented M1 by adding direct eval fixtures for `flashcard-generator` and `quiz-generator`, plus baseline evidence showing prompt directories remain absent until M2.
+- 2026-07-04: Code-review M1 R1 returned clean-with-notes and closed M1.
 
 ## Decision log
 
@@ -226,6 +227,12 @@ No runtime server, direct export integration, external service, generated asset,
   - `python -m unittest discover tests`
   - `git diff --check`
   - `test ! -e skills/flashcard-generator/SKILL.md && test ! -e skills/quiz-generator/SKILL.md && echo 'skill prompts absent as expected for M1'`
+- Code-review M1 R1 reviewer validation passed:
+  - `python -c 'from pathlib import Path; from tests.validate_skills import validate_cases_file; [(_ := validate_cases_file(name, Path(f"tests/evals/skills/{name}/cases.yaml")), (_).errors and (_ for _ in ()).throw(AssertionError(_.errors))) for name in ("flashcard-generator", "quiz-generator")]; print("direct eval fixture validation passed")'`
+  - `python -m unittest discover tests`
+  - `git diff --check HEAD^..HEAD`
+  - `test ! -e skills/flashcard-generator/SKILL.md && test ! -e skills/quiz-generator/SKILL.md && echo 'skill prompts absent as expected for M1'`
+  - `python tests/validate_skills.py`
 
 ## Outcome and retrospective
 
@@ -234,4 +241,4 @@ No runtime server, direct export integration, external service, generated asset,
 ## Readiness
 
 - See `Current Handoff Summary`.
-- Ready for `code-review M1`.
+- Ready for `implement M2`.
