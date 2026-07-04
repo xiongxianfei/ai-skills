@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillsmith.local/schemas/flashcard.schema.json",
+  "title": "Flashcard Deck",
+  "description": "Reference schema for flashcard-generator canonical JSON. This schema documents the expected shape but is not enforced by CI in the first slice.",
+  "type": "object",
+  "required": ["deck_title", "audience", "source_scope", "learning_objectives", "cards"],
+  "additionalProperties": false,
+  "properties": {
+    "deck_title": {"type": "string"},
+    "audience": {"type": "string"},
+    "source_scope": {"type": "string"},
+    "learning_objectives": {
+      "type": "array",
+      "items": {"type": "string"},
+      "minItems": 1
+    },
+    "cards": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "prompt", "answer", "source", "tags", "notes", "quality_checks"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {"type": "string"},
+          "type": {
+            "type": "string",
+            "enum": ["basic", "cloze", "bidirectional", "contrast", "example-non-example", "procedure", "failure-mode"]
+          },
+          "prompt": {"type": "string"},
+          "answer": {"type": "string"},
+          "source": {
+            "type": "object",
+            "required": ["kind", "reference"],
+            "additionalProperties": false,
+            "properties": {
+              "kind": {"type": "string", "enum": ["source", "inferred"]},
+              "reference": {"type": "string"}
+            }
+          },
+          "tags": {
+            "type": "array",
+            "items": {"type": "string"}
+          },
+          "notes": {"type": "string"},
+          "quality_checks": {
+            "type": "object",
+            "required": ["atomic", "answerable", "source_grounded", "useful"],
+            "additionalProperties": false,
+            "properties": {
+              "atomic": {"type": "boolean"},
+              "answerable": {"type": "boolean"},
+              "source_grounded": {"type": "boolean"},
+              "useful": {"type": "boolean"}
+            }
+          }
+        }
+      }
+    }
+  }
+}

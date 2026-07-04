@@ -13,8 +13,8 @@ test_spec: specs/flashcard-and-quiz-skills.test.md
 plan: docs/plans/2026-07-04-flashcard-and-quiz-skills.md
 review_log: docs/changes/2026-07-04-flashcard-and-quiz-skills/review-log.md
 current_milestone: M2
-next_stage: implement M2
-milestone_state: planned
+next_stage: code-review M2
+milestone_state: review-requested
 last_reviewed_milestone: M1
 last_review_status: clean-with-notes
 open_findings: []
@@ -63,3 +63,27 @@ validation:
     stage: code-review M1
     status: passed
     notes: "Reviewer rerun passed for 11 existing skills with the known non-blocking grandfathered-evals warning."
+  - command: python - <<'PY' ... json/yaml ok
+    stage: implement M2
+    status: passed
+    notes: "JSON reference schemas and YAML fixtures/change metadata parsed successfully."
+  - command: python tests/validate_skills.py
+    stage: implement M2
+    status: passed
+    notes: "Passed for 13 skills with the known non-blocking grandfathered-evals warning for unrelated grandfathered skills."
+  - command: python -m unittest discover tests
+    stage: implement M2
+    status: passed
+    notes: "Ran 31 tests."
+  - command: python tests/check_readme_sync.py
+    stage: implement M2
+    status: passed
+    notes: "README sync check passed after adding flashcard-generator and quiz-generator."
+  - command: git diff --check
+    stage: implement M2
+    status: passed
+    notes: "No whitespace errors."
+  - command: wc -l skills/flashcard-generator/SKILL.md skills/quiz-generator/SKILL.md
+    stage: implement M2
+    status: passed
+    notes: "flashcard-generator 136 lines; quiz-generator 158 lines."
