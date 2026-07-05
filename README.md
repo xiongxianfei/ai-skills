@@ -103,6 +103,49 @@ Invoke by slash command, passing your text as the argument:
 
 Or just describe what you want in natural language — Claude auto-invokes the right skill based on context.
 
+#### Learning artifact examples
+
+Use `/flashcard-generator` when the goal is durable recall and spaced repetition:
+
+```text
+/flashcard-generator  Turn this onboarding note into 20 Anki-ready flashcards.
+Audience: new backend engineers.
+Prefer basic, cloze, contrast, and failure-mode cards.
+Export: Markdown table plus TSV.
+
+<paste source material>
+```
+
+Use `/quiz-generator` when the goal is assessment, diagnosis, or feedback:
+
+```text
+/quiz-generator  Create a 10-question diagnostic quiz from this design doc.
+Audience: senior engineers joining the project.
+Include MCQs and short-answer questions.
+Include answer key, rationales, and remediation feedback.
+
+<paste source material>
+```
+
+For requests that need both, keep the two outputs separate:
+
+```text
+Create flashcards and a diagnostic quiz from this chapter.
+Extract shared learning objectives once.
+Keep flashcards and quiz outputs separate.
+Return separate JSON payloads for each.
+
+<paste source material>
+```
+
+Best practices for both learning skills:
+
+- Provide source material instead of asking for unsupported facts.
+- State the audience, purpose, desired count, difficulty, and export format.
+- Ask external or related facts to be marked as inferred.
+- Request fewer items when the source is short or narrow.
+- Prefer separate flashcard and quiz sections instead of a merged study-artifact format.
+
 ### Other models
 
 Paste the prompt as the system prompt, then send your input as the first user message.
@@ -129,11 +172,15 @@ Turns source material into spaced-repetition-ready flashcards with learning obje
 
 Best for: Anki cards, cloze deletions, memory prompts, durable recall practice, and retention cards from notes, documents, code, papers, courses, or project material.
 
+Use it when you want learners to remember important ideas over time. For best results, ask for atomic cards, contrast cards for easily confused concepts, cloze cards only when the surrounding context is strong, and an export format such as Markdown, JSON, CSV, TSV, or Anki-oriented text.
+
 ### `quiz-generator` — Quiz Generator
 
 Turns source material into diagnostic quizzes with a blueprint, learning objectives, questions, answer keys, rationales, feedback, rubrics where useful, and canonical JSON.
 
 Best for: comprehension checks, MCQs, short-answer questions, diagnostic assessment, misconception checks, and transfer-oriented learning questions.
+
+Use it when you want to assess understanding or diagnose gaps. For best results, ask for a quiz blueprint, cognitive levels such as recall/comprehension/application/diagnosis, one best answer for MCQs unless multiple-select is intended, and rationales or feedback for each answer.
 
 ### `communicator` — Formal Russian Communication Assistant
 
