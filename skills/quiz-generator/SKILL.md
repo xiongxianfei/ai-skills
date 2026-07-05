@@ -20,6 +20,8 @@ Use local references when useful:
 - `references/question-quality.md` for quiz-specific quality checks.
 - `schemas/quiz-item.schema.json` as the reference contract for canonical JSON. The schema is documentation only; do not claim executable validation.
 
+In canonical JSON, use `"source"` when the item is grounded directly in supplied material. Use `"inferred"` only when the user requested related or external context and the inference is clearly marked.
+
 ## Workflow
 
 1. Identify quiz purpose, audience, source material, difficulty, question count, question types, and requested export format when provided.
@@ -70,7 +72,17 @@ For MCQs:
 - Avoid "all of the above" and "none of the above" by default.
 - Explain why each option is right or wrong.
 
-If the user asks for both flashcards and a quiz, extract shared learning objectives and a compact knowledge map once, then keep the quiz output separate from flashcard output and use a separate canonical JSON payload for the quiz.
+## Combined Flashcard And Quiz Requests
+
+If another skill can handle the flashcards, keep this skill focused on the quiz and let the flashcard skill provide its section.
+
+If only this skill is active, use this compact fallback:
+
+1. Extract shared learning objectives and one compact knowledge map.
+2. Produce the quiz using this skill's full output contract.
+3. Produce a compact flashcard fallback section with a deck summary, 3-5 atomic cards, and a separate flashcard JSON payload.
+4. Keep the quiz and flashcard sections and JSON payloads separate.
+5. Do not create a merged study-artifacts schema.
 
 ## Source Boundaries
 
@@ -145,7 +157,7 @@ Use concise Markdown-compatible plain text. No emoji.
       ],
       "answer": "<answer>",
       "feedback": "<feedback>",
-      "source": {"kind": "source|inferred", "reference": "<reference or rationale>"}
+      "source": {"kind": "source", "reference": "<source location or summary>"}
     }
   ]
 }

@@ -22,7 +22,7 @@
 | CI status | pending | GitHub reports `Validate skill files` is `IN_PROGRESS` at handoff. |
 | Lifecycle state | pass | `docs/plan.md`, plan body, and `change.yaml` showed final closeout, branch-ready, next stage `pr` before PR open. |
 | Required change pack | pass | `change.yaml`, `explain-change.md`, `verify-report.md`, reviews, review log, and post-change evidence exist under `docs/changes/2026-07-04-flashcard-and-quiz-skills/`. |
-| Review resolution | pass | No material findings were recorded; no `review-resolution.md` is required. |
+| Review resolution | pass | PR review material findings were accepted and closed in `review-resolution.md`; needs-decision count is 0. |
 | Secrets/debug artifacts | pass | Verify found no scripts, secrets, API credentials, dependency changes, installer changes, validator changes, CI changes, or unrelated skill changes. |
 
 ## PR Body
@@ -62,7 +62,7 @@
 - [x] `git diff --check main...HEAD` - passed.
 - [x] JSON/YAML parse check for change metadata, fixtures, and schemas - passed.
 - [x] Direct `validate_cases_file` invocation for both new eval fixture files - passed.
-- [x] `wc -l skills/flashcard-generator/SKILL.md skills/quiz-generator/SKILL.md` - 136 and 158 lines.
+- [x] `wc -l skills/flashcard-generator/SKILL.md skills/quiz-generator/SKILL.md` - 149 and 170 lines after PR review resolution.
 - [x] Scoped no-integration diff-name check - no CI, validator, installer, or unrelated skill changes.
 - [ ] CI - `Validate skill files` in progress at handoff.
 
@@ -78,12 +78,12 @@
 - R33-R35, AC12 -> T13, T15, CMD2, CMD6 -> no forbidden integrations, no high-stakes guarantees, prompt line limits.
 
 ## Review resolution summary
-- Accepted: 0
+- Accepted: 2
 - Rejected: 0
 - Deferred: 0
 - Partially accepted: 0
 - Needs decision: 0
-- Review-resolution: not required; no material findings were recorded.
+- Review-resolution: `docs/changes/2026-07-04-flashcard-and-quiz-skills/review-resolution.md`
 
 ## Risks and rollback
 - Static prompt inspection and eval fixtures cannot guarantee every future model output will satisfy the prompt contract.

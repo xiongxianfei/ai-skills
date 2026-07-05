@@ -81,8 +81,8 @@ Validation was run during implementation and review stages. The latest recorded 
 - `git diff --check HEAD^..HEAD`
   - Passed during review checks.
 - `wc -l skills/flashcard-generator/SKILL.md skills/quiz-generator/SKILL.md`
-  - `flashcard-generator`: 136 lines.
-  - `quiz-generator`: 158 lines.
+- `flashcard-generator`: 149 lines after PR review resolution.
+- `quiz-generator`: 170 lines after PR review resolution.
 - YAML parse checks for `docs/changes/2026-07-04-flashcard-and-quiz-skills/change.yaml`
   - Passed.
 - Direct fixture validation for both new eval files in M1
@@ -94,9 +94,18 @@ Hosted CI status is not claimed here. Final verification has not yet run.
 
 ## Review Resolution Summary
 
-No material findings were recorded. No `review-resolution.md` was required.
+PR review recorded two material findings. Both were accepted and resolved in `docs/changes/2026-07-04-flashcard-and-quiz-skills/review-resolution.md`.
 
-Clean review records exist for:
+Review-resolution summary:
+
+- Accepted: 2
+- Rejected: 0
+- Deferred: 0
+- Partially accepted: 0
+- Needs decision: 0
+- Closeout status: closed
+
+Clean or closed review records exist for:
 
 - Proposal review R1.
 - Spec review R1.
@@ -106,6 +115,7 @@ Clean review records exist for:
 - Code review M2 R1.
 - Code review M3 R1.
 - Metadata cleanup review R1.
+- PR review resolution for `F-PR32-SKILL-001` and `F-PR32-SKILL-002`.
 
 ## Alternatives Rejected
 
@@ -150,6 +160,6 @@ Potential follow-ups:
 
 ## Current Handoff
 
-Implementation milestones are closed and no review-resolution is open. This explanation is ready for the next final closeout stage: `verify`.
+Implementation milestones are closed and PR review-resolution is closed. This explanation is ready for refreshed final verification.
 
 This artifact does not claim final verification, branch readiness, PR readiness, hosted CI success, or merge readiness.

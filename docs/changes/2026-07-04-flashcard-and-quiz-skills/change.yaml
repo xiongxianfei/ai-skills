@@ -16,7 +16,7 @@ current_milestone: final closeout
 next_stage: hosted-ci-and-review
 milestone_state: pr-opened
 last_reviewed_milestone: M3
-last_review_status: clean-with-notes
+last_review_status: changes-requested-resolved
 open_findings: []
 workflow:
   autoprogression:
@@ -207,6 +207,30 @@ validation:
     stage: verify
     status: passed
     notes: "Working tree clean before verify artifact edits."
+  - command: python tests/validate_skills.py
+    stage: review-resolution PR32
+    status: passed
+    notes: "Passed for 13 skills with the known non-blocking grandfathered-evals warning for unrelated older skills."
+  - command: python -m unittest discover tests
+    stage: review-resolution PR32
+    status: passed
+    notes: "Ran 31 tests."
+  - command: python tests/check_readme_sync.py
+    stage: review-resolution PR32
+    status: passed
+    notes: "README sync check passed."
+  - command: git diff --check
+    stage: review-resolution PR32
+    status: passed
+    notes: "No whitespace errors."
+  - command: python - <<'PY' ... json/yaml ok
+    stage: review-resolution PR32
+    status: passed
+    notes: "Parsed change metadata, eval fixtures, and reference schemas."
+  - command: wc -l skills/flashcard-generator/SKILL.md skills/quiz-generator/SKILL.md
+    stage: review-resolution PR32
+    status: passed
+    notes: "flashcard-generator 149 lines; quiz-generator 170 lines."
 pr:
   url: https://github.com/xiongxianfei/skillsmith/pull/32
   title: "feat: add flashcard and quiz generator skills"
@@ -215,3 +239,10 @@ pr:
   state: open
   draft: false
   initial_ci_status: "Validate skill files in progress at handoff."
+review_resolution:
+  status: closed
+  path: docs/changes/2026-07-04-flashcard-and-quiz-skills/review-resolution.md
+  accepted_findings:
+    - F-PR32-SKILL-001
+    - F-PR32-SKILL-002
+  needs_decision: 0

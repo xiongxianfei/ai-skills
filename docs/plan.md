@@ -4,7 +4,7 @@
 
 | Plan | State | Current milestone | Next stage | Active context |
 | --- | --- | --- | --- | --- |
-| [Flashcard and quiz generator skills](plans/2026-07-04-flashcard-and-quiz-skills.md) | active | final closeout | hosted-ci-and-review | PR #32 opened; hosted CI was in progress at handoff. |
+| [Flashcard and quiz generator skills](plans/2026-07-04-flashcard-and-quiz-skills.md) | active | final closeout | hosted-ci-and-review | PR #32 opened; PR review findings resolved; hosted CI/review pending. |
 | [Restaurant menu advisor](plans/2026-06-21-add-restaurant-menu-advisor.md) | active | final closeout | hosted-ci-and-review | PR #31 opened; hosted CI was pending/in progress at handoff. |
 | [Editor source-language plus companion-language optimization](plans/2026-06-16-editor-source-plus-companion-language-optimization.md) | active | final closeout | pr | Verify passed; branch-ready for PR handoff. |
 | [Editor learning default optimization](plans/2026-06-16-editor-learning-default-optimization.md) | active | final closeout | pr | Verify passed; branch-ready for PR handoff. |

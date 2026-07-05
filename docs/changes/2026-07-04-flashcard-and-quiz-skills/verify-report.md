@@ -26,7 +26,7 @@ Final verification passed for the workflow-managed `flashcard-generator` and `qu
 | Test validity | pass | `validate_skills.py` checks skill structure and eval policy; README sync checks public catalog drift; fixture validation verifies both new eval files; post-change evidence records manual proof for named smoke cases. |
 | Architecture coherence | pass | Spec-review R1 records `architecture-not-required`; final diff adds prompt/reference/schema/eval/docs artifacts only. |
 | Artifact lifecycle state | pass | `change.yaml`, active plan, `docs/plan.md`, review log, review records, explain-change, and this verify report agree on final closeout and PR handoff. |
-| Plan completion | pass | M1-M3 are closed; no review-resolution is required; final closeout now routes to `pr` after this verify result. |
+| Plan completion | pass | M1-M3 are closed; PR review-resolution is closed; final closeout now routes to hosted CI/review after PR handoff. |
 | Validation evidence | pass | Final local validation commands passed and are recorded below; hosted CI was not observed. |
 | Drift detection | pass | A stale `Last reviewed milestone` value was fixed before verify and independently reviewed; no remaining blocking drift found. |
 | Risk closure | pass | Source grounding, unsupported inference, high-stakes guarantee boundaries, schema-reference-only behavior, and no-integration scope are covered by prompts, fixtures, evidence, and reviews. |
@@ -68,9 +68,9 @@ No unplanned behavior was found:
 
 ## Review And Resolution Check
 
-No material findings were recorded. No `review-resolution.md` is required.
+PR review recorded two material findings. `review-resolution.md` has `Closeout status: closed`, accepts both findings, records no owner decision needed, and links the validation evidence for the fixes.
 
-The review log records clean or approved outcomes for proposal review, spec review, plan review, test-spec review, code-review M1, code-review M2, code-review M3, and metadata-cleanup review. `change.yaml` lists no open findings.
+The review log records clean, approved, or closed outcomes for proposal review, spec review, plan review, test-spec review, code-review M1, code-review M2, code-review M3, metadata-cleanup review, and PR review resolution. `change.yaml` lists no open findings.
 
 ## Lifecycle Drift Check
 
@@ -101,7 +101,7 @@ Working directory: `/home/xiongxianfei/data/20260525-skillsmith`
 | `python tests/check_readme_sync.py` | pass | README sync check passed. |
 | `git diff --check main...HEAD` | pass | No whitespace errors. |
 | `python - <<'PY' ... json/yaml ok` | pass | Parsed `change.yaml`, both eval fixtures, and both reference schemas. |
-| `wc -l skills/flashcard-generator/SKILL.md skills/quiz-generator/SKILL.md` | pass | `flashcard-generator` 136 lines; `quiz-generator` 158 lines. |
+| `wc -l skills/flashcard-generator/SKILL.md skills/quiz-generator/SKILL.md` | pass | `flashcard-generator` 149 lines; `quiz-generator` 170 lines after PR review resolution. |
 | direct `validate_cases_file` invocation for both new fixture files | pass | Direct eval fixture validation passed. |
 | scoped no-integration diff-name check | pass | No CI, validator, installer, or unrelated skill changes. |
 | lifecycle grep across active plan, `change.yaml`, and `docs/plan.md` | pass | Final closeout state is internally consistent. |

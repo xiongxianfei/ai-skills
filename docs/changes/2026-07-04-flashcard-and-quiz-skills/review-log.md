@@ -65,3 +65,13 @@
 - Material findings: none
 - Outcome: isolated final handoff metadata cleanup is closed; final closeout remains next.
 - Resolution: not required
+
+## PR Review R1
+
+- Path: PR #32 review feedback; resolution recorded in `docs/changes/2026-07-04-flashcard-and-quiz-skills/review-resolution.md`
+- Status: changes-requested
+- Material findings:
+  - `F-PR32-SKILL-001`
+  - `F-PR32-SKILL-002`
+- Outcome: both findings accepted and resolved; review-resolution closeout is closed.
+- Resolution: `docs/changes/2026-07-04-flashcard-and-quiz-skills/review-resolution.md`

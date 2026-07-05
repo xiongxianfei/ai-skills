@@ -20,6 +20,8 @@ Use local references when useful:
 - `references/card-quality.md` for flashcard-specific quality checks.
 - `schemas/flashcard.schema.json` as the reference contract for canonical JSON. The schema is documentation only; do not claim executable validation.
 
+In canonical JSON, use `"source"` when the item is grounded directly in supplied material. Use `"inferred"` only when the user requested related or external context and the inference is clearly marked.
+
 ## Workflow
 
 1. Identify learner goal, audience, source material, desired card count, difficulty, and requested export format when provided.
@@ -38,7 +40,7 @@ Use local references when useful:
    - cloze;
    - bidirectional;
    - contrast;
-   - example/non-example;
+   - example-non-example;
    - procedure;
    - failure-mode.
 6. Validate each card for atomicity, source grounding, answerability, specificity, context, duplicate handling, and usefulness.
@@ -65,7 +67,18 @@ Default assumptions when the user does not specify:
 - Include enough context for project-specific or ambiguous terms.
 - Cloze cards need enough surrounding context to be answerable.
 - If the source is too thin for the requested count or difficulty, say so and produce only supportable cards.
-- If the user asks for both flashcards and a quiz, extract shared learning objectives and a compact knowledge map once, then keep the flashcard output separate from quiz output and use a separate canonical JSON payload for the flashcards.
+
+## Combined Flashcard And Quiz Requests
+
+If another skill can handle the quiz, keep this skill focused on flashcards and let the quiz skill provide its section.
+
+If only this skill is active, use this compact fallback:
+
+1. Extract shared learning objectives and one compact knowledge map.
+2. Produce flashcards using this skill's full output contract.
+3. Produce a compact quiz fallback section with a quiz blueprint, 3-5 diagnostic questions, answer key and rationales, and a separate quiz JSON payload.
+4. Keep the flashcard and quiz sections and JSON payloads separate.
+5. Do not create a merged study-artifacts schema.
 
 ## Source Boundaries
 
@@ -115,7 +128,7 @@ Use concise Markdown-compatible plain text. No emoji.
       "type": "basic",
       "prompt": "<atomic prompt>",
       "answer": "<answer>",
-      "source": {"kind": "source|inferred", "reference": "<reference or rationale>"},
+      "source": {"kind": "source", "reference": "<source location or summary>"},
       "tags": ["<tag>"],
       "notes": "<explanation>",
       "quality_checks": {

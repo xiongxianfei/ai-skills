@@ -61,11 +61,11 @@ No runtime server, direct export integration, external service, generated asset,
 - Current milestone: final closeout
 - Current milestone state: pr-opened
 - Last reviewed milestone: M3
-- Review status: M3 code-review R1 clean-with-notes; no review-resolution required
+- Review status: PR review findings resolved; review-resolution closed
 - Remaining in-scope implementation milestones: none
 - Next stage: hosted-ci-and-review
 - Final closeout readiness: PR opened; hosted CI/review pending
-- Reason final closeout is or is not ready: implementation, reviews, explain-change, verification, and PR handoff are complete; hosted CI and human review remain.
+- Reason final closeout is or is not ready: implementation, reviews, review-resolution, explain-change, verification, and PR handoff are complete; hosted CI and human review remain.
 
 ## Milestones
 
@@ -214,6 +214,7 @@ No runtime server, direct export integration, external service, generated asset,
 - 2026-07-04: Code-review M3 R1 returned clean-with-notes and closed M3.
 - 2026-07-04: Verify passed and recorded branch-ready evidence in `docs/changes/2026-07-04-flashcard-and-quiz-skills/verify-report.md`.
 - 2026-07-05: Opened PR #32 and recorded PR handoff evidence in `docs/changes/2026-07-04-flashcard-and-quiz-skills/pr.md`; hosted CI was in progress at handoff.
+- 2026-07-05: Accepted and resolved PR review findings `F-PR32-SKILL-001` and `F-PR32-SKILL-002`; recorded closed review-resolution.
 
 ## Decision log
 
@@ -282,6 +283,13 @@ No runtime server, direct export integration, external service, generated asset,
   - scoped no-integration diff-name check
   - lifecycle state grep
   - `git merge-base HEAD main` and `git rev-parse main`
+- Review-resolution PR32 validation passed:
+  - `python tests/validate_skills.py`
+  - `python -m unittest discover tests`
+  - `python tests/check_readme_sync.py`
+  - `git diff --check`
+  - `python - <<'PY' ... json/yaml ok`
+  - `wc -l skills/flashcard-generator/SKILL.md skills/quiz-generator/SKILL.md`
 
 ## Outcome and retrospective
 
