@@ -21,6 +21,8 @@ A curated collection of AI prompts for writing, translation, and productivity �
 |-------|---------------|-------------|
 | [editor](skills/editor/SKILL.md) | `/editor` | Expert text editing and translation with source-language plus companion-language output, structured learning notes by default, and explicit target-language or no-notes overrides |
 | [restaurant-menu-advisor](skills/restaurant-menu-advisor/SKILL.md) | `/restaurant-menu-advisor` | Restaurant menu advisor for choosing what to order from supplied menu photos, pasted menus, or readable dish evidence, with allergy-aware boundaries and illustrative visual briefs |
+| [flashcard-generator](skills/flashcard-generator/SKILL.md) | `/flashcard-generator` | Source-grounded spaced-repetition flashcard generator for Anki cards, cloze deletions, memory prompts, durable recall practice, and retention cards |
+| [quiz-generator](skills/quiz-generator/SKILL.md) | `/quiz-generator` | Source-grounded diagnostic quiz generator for quizzes, comprehension checks, MCQs, short-answer items, answer keys, rationales, feedback, and rubrics |
 | [communicator](skills/communicator/SKILL.md) | `/communicator` | Draft formal Russian messages from Chinese input, with Chinese translation and cultural strategy notes |
 | [doctor](skills/doctor/SKILL.md) | `/doctor` | Medical consultation — symptoms, medications, lab reports, health advice, with referral guidance and safety flags |
 | [fitness-coach](skills/fitness-coach/SKILL.md) | `/fitness-coach` | Personal fitness coach — training plans, exercise technique, nutrition, and recovery advice |
@@ -45,7 +47,7 @@ curl -sSL https://raw.githubusercontent.com/xiongxianfei/Skillsmith/main/install
 
 This clones the repo into a temp directory, copies all skill folders into `~/.claude/skills/`, and cleans up automatically. Run the same command again to update.
 
-Restart Claude Code after installing — skills are available immediately as `/editor`, `/restaurant-menu-advisor`, `/communicator`, `/doctor`, `/fitness-coach`, `/nvc`, `/email-drafter`, `/journaling`, `/study-planner`, `/language-tutor`, and `/oscp-coach`.
+Restart Claude Code after installing — skills are available immediately as `/editor`, `/restaurant-menu-advisor`, `/flashcard-generator`, `/quiz-generator`, `/communicator`, `/doctor`, `/fitness-coach`, `/nvc`, `/email-drafter`, `/journaling`, `/study-planner`, `/language-tutor`, and `/oscp-coach`.
 
 #### Install a specific skill only
 
@@ -73,7 +75,7 @@ git clone https://github.com/xiongxianfei/Skillsmith
 claude --plugin-dir ./Skillsmith
 ```
 
-Skills are available as `/Skillsmith:editor`, `/Skillsmith:restaurant-menu-advisor`, and `/Skillsmith:communicator` for this session only.
+Skills are available as `/Skillsmith:editor`, `/Skillsmith:restaurant-menu-advisor`, `/Skillsmith:flashcard-generator`, `/Skillsmith:quiz-generator`, and `/Skillsmith:communicator` for this session only.
 
 ### Other AI models (ChatGPT, Gemini, etc.)
 
@@ -94,6 +96,8 @@ Invoke by slash command, passing your text as the argument:
 ```
 /editor  Please polish this text for me.
 /restaurant-menu-advisor  Here's the menu. What should I order if I want something filling under $25?
+/flashcard-generator  Turn this onboarding note into Anki-ready flashcards.
+/quiz-generator  Make a 10-question diagnostic quiz from this chapter.
 /communicator  我想告诉房东暖气坏了，请帮我写一条俄语消息。
 ```
 
@@ -118,6 +122,18 @@ Best for: emails, PR descriptions, documentation, release notes, messages, acade
 Compares supplied restaurant-menu evidence against taste, budget, appetite, dietary restrictions, allergies, and sharing context, then returns a small grounded shortlist, one leading recommendation, staff-confirmation questions when needed, and a copyable illustrative visual brief.
 
 Best for: choosing from unfamiliar menus, deciding quickly at a restaurant, comparing a few dishes, handling allergy uncertainty conservatively, and previewing a likely dish appearance without treating generated images as restaurant photos.
+
+### `flashcard-generator` — Flashcard Generator
+
+Turns source material into spaced-repetition-ready flashcards with learning objectives, a compact knowledge map, atomic prompts, explanations, tags, and canonical JSON.
+
+Best for: Anki cards, cloze deletions, memory prompts, durable recall practice, and retention cards from notes, documents, code, papers, courses, or project material.
+
+### `quiz-generator` — Quiz Generator
+
+Turns source material into diagnostic quizzes with a blueprint, learning objectives, questions, answer keys, rationales, feedback, rubrics where useful, and canonical JSON.
+
+Best for: comprehension checks, MCQs, short-answer questions, diagnostic assessment, misconception checks, and transfer-oriented learning questions.
 
 ### `communicator` — Formal Russian Communication Assistant
 

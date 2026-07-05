@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillsmith.local/schemas/quiz-item.schema.json",
+  "title": "Quiz",
+  "description": "Reference schema for quiz-generator canonical JSON. This schema documents the expected shape but is not enforced by CI in the first slice.",
+  "type": "object",
+  "required": ["quiz_title", "purpose", "audience", "source_scope", "blueprint", "questions"],
+  "additionalProperties": false,
+  "properties": {
+    "quiz_title": {"type": "string"},
+    "purpose": {"type": "string"},
+    "audience": {"type": "string"},
+    "source_scope": {"type": "string"},
+    "blueprint": {
+      "type": "object",
+      "required": ["objective_coverage", "cognitive_levels", "question_types", "difficulty"],
+      "additionalProperties": false,
+      "properties": {
+        "objective_coverage": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["objective", "count"],
+            "additionalProperties": false,
+            "properties": {
+              "objective": {"type": "string"},
+              "count": {"type": "integer", "minimum": 0}
+            }
+          }
+        },
+        "cognitive_levels": {"type": "object", "additionalProperties": {"type": "integer", "minimum": 0}},
+        "question_types": {"type": "object", "additionalProperties": {"type": "integer", "minimum": 0}},
+        "difficulty": {"type": "object", "additionalProperties": {"type": "integer", "minimum": 0}}
+      }
+    },
+    "questions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "objective", "cognitive_level", "difficulty", "stem", "answer", "feedback", "source"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {"type": "string"},
+          "type": {"type": "string", "enum": ["mcq", "short_answer", "rubric", "free_response", "diagnostic"]},
+          "objective": {"type": "string"},
+          "cognitive_level": {"type": "string"},
+          "difficulty": {"type": "string", "enum": ["easy", "medium", "hard", "mixed"]},
+          "stem": {"type": "string"},
+          "options": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id", "text", "is_correct", "rationale"],
+              "additionalProperties": false,
+              "properties": {
+                "id": {"type": "string"},
+                "text": {"type": "string"},
+                "is_correct": {"type": "boolean"},
+                "rationale": {"type": "string"}
+              }
+            }
+          },
+          "answer": {"type": "string"},
+          "feedback": {"type": "string"},
+          "source": {
+            "type": "object",
+            "required": ["kind", "reference"],
+            "additionalProperties": false,
+            "properties": {
+              "kind": {"type": "string", "enum": ["source", "inferred"]},
+              "reference": {"type": "string"}
+            }
+          }
+        }
+      }
+    }
+  }
+}
