@@ -59,13 +59,13 @@ No runtime server, direct export integration, external service, generated asset,
 ## Current Handoff Summary
 
 - Current milestone: final closeout
-- Current milestone state: branch-ready
+- Current milestone state: pr-opened
 - Last reviewed milestone: M3
 - Review status: M3 code-review R1 clean-with-notes; no review-resolution required
 - Remaining in-scope implementation milestones: none
-- Next stage: pr
-- Final closeout readiness: branch-ready for PR handoff
-- Reason final closeout is or is not ready: implementation, reviews, explain-change, and verification are complete; PR handoff remains.
+- Next stage: hosted-ci-and-review
+- Final closeout readiness: PR opened; hosted CI/review pending
+- Reason final closeout is or is not ready: implementation, reviews, explain-change, verification, and PR handoff are complete; hosted CI and human review remain.
 
 ## Milestones
 
@@ -213,6 +213,7 @@ No runtime server, direct export integration, external service, generated asset,
 - 2026-07-04: Completed M3 evidence and validation, then moved M3 to code-review handoff.
 - 2026-07-04: Code-review M3 R1 returned clean-with-notes and closed M3.
 - 2026-07-04: Verify passed and recorded branch-ready evidence in `docs/changes/2026-07-04-flashcard-and-quiz-skills/verify-report.md`.
+- 2026-07-05: Opened PR #32 and recorded PR handoff evidence in `docs/changes/2026-07-04-flashcard-and-quiz-skills/pr.md`; hosted CI was in progress at handoff.
 
 ## Decision log
 
@@ -289,4 +290,4 @@ No runtime server, direct export integration, external service, generated asset,
 ## Readiness
 
 - See `Current Handoff Summary`.
-- Branch-ready for PR handoff.
+- PR opened; hosted CI/review pending.
